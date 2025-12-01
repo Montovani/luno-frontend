@@ -1,0 +1,43 @@
+.imgContainer {
+    width: 7rem;
+    height: auto;
+}
+.imgStyle{
+    width: 100%;
+}
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5rem;
+    background-color: white;
+
+}
+.linksContainer {
+    display: flex;
+    gap: 3.5rem;
+    
+}
+.linksContainer a {
+    color: rgba(0, 0, 0, 0.87)
+}
+.btnContainer {
+    display: flex;
+    gap: 5px;
+}
+.btnContainer button {
+    height: 2rem;
+    border-radius: 18px;
+    padding: 0 0.5rem;
+    background-color: #183F39;
+}
+
+@media (max-width: 768px){
+    .navContainer{
+        flex-direction: column;
+        gap:10px
+    }
+}
