@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router"
-import Logo from "../../assets/images/Luno_Logo.png"
+import Logo from "../../assets/images/Luno_Logo.PNG"
 import styles from "./Navbar.module.css"
 import { useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
