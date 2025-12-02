@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from './Signup.module.css'
 import { dutchCities } from '../data/cities'
 import axios from 'axios'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 function Signup() {
     const [name, setName] = useState('')
@@ -15,7 +15,6 @@ function Signup() {
 
   const handleSubmit = async(e) => {
     try {
-    console.log('Signup:', { name, email, password })
     e.preventDefault()
     const userBody = {
       name,
@@ -23,8 +22,7 @@ function Signup() {
       email,
       password
     }
-    console.log(userBody)
-      await axios.post('http://localhost:5005/api/auth/signup',userBody)
+      await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/signup`,userBody)
       setName('')
       setCity('')
       setEmail('')
@@ -114,9 +112,9 @@ function Signup() {
 
         <p className={styles.footer}>
           Already have an account?{" "}
-          <a href="/login" className={styles.link}>
+          <Link to='/login'>
             Log in
-          </a>
+          </Link>
         </p>
 
       </div>

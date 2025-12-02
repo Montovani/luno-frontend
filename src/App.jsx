@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard'
 import FindSitter from './pages/FindSitter'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Private from './components/Private'
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route> 
-        <Route path='/dashboard' element={<Dashboard />}></Route>
+        <Route path='/dashboard' element={<Private><Dashboard /></Private>}></Route>
         <Route path='/pet-sitter' element={<FindSitter />}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
