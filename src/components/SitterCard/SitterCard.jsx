@@ -1,23 +1,24 @@
 import styles from "./SitterCard.module.css";
 
-function SitterCard() {
+function SitterCard({name,petsCategoryAllowed,mainProfilePhoto}) {
   return (
     <div className={styles.cardContainer}>
       <div></div>
       <div className={styles.imgContainer}>
-        
+
       </div>
       <div className={styles.cardTitleSub}>
-        <h3>John</h3>
+        <h3>{name}</h3>
         <p>Just a pet lover</p>
       </div>
       <div className={styles.petCared}>
-        <div>
-          <p>Small Dog</p>
-        </div>
-        <div>
-          <p>Cat</p>
-        </div>
+        {petsCategoryAllowed.map((pet,index)=>{
+            return (
+                <div key={index}>
+                    <p>{pet}</p>
+                </div>
+            )
+        })}
       </div>
     </div>
   );

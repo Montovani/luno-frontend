@@ -1,5 +1,13 @@
 .container {
-    width: 60%;
-    height: 100%;
-    background-color: rgb(196, 193, 193);
+  flex: 2;                        /* ocupa 2/3 */
+  background-color: rgb(196, 193, 193);
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  align-items: flex-start;
+  justify-content: flex-start;
+    align-content: flex-start;
+
 }

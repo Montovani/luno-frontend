@@ -8,7 +8,7 @@ const petTypes = [
   "Cat",
 ];
 
-function Search({ onSearch }) {
+function Search({setSearch}) {
   const [searchQuery, setSearchQuery] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -16,9 +16,12 @@ function Search({ onSearch }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (onSearch) {
-      onSearch({ searchQuery, startDate, endDate, petType });
+    const searchObj = {
+      petType,
+      city: searchQuery
     }
+    setSearch(searchObj)
+    console.log('achieved')
   };
 
   return (
@@ -34,7 +37,7 @@ function Search({ onSearch }) {
                 id="searchQuery"
                 name="searchQuery"
                 type="search"
-                placeholder="Amsterdam, 1012, or Jane Doe"
+                placeholder="Amsterdam"
                 className={styles.input}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

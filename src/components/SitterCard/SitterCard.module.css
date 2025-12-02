@@ -1,8 +1,7 @@
 .cardContainer {
     margin: 1rem;
-    background-color: red;
     width: 17rem;
-    height: 20.5rem;
+    min-height: 20.5rem;
 }
 .imgContainer {
     background-color: grey;
@@ -23,9 +22,10 @@
 .petCared {
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 .petCared div{
-    background-color: blue;
+    background-color: rgb(128, 128, 161);
     border-radius: 5rem;
     width: 6rem;
 }
