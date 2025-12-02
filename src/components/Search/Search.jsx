@@ -47,35 +47,6 @@ function Search({setSearch}) {
             <button type="submit" className={styles.button}>
               Search
             </button>
-
-            <div className={`${styles.field} ${styles.compactField}`}>
-              <label className={styles.srOnly} htmlFor="startDate">
-                Start date
-              </label>
-              <input
-                id="startDate"
-                name="startDate"
-                type="date"
-                className={styles.input}
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-              />
-            </div>
-
-            <div className={`${styles.field} ${styles.compactField}`}>
-              <label className={styles.srOnly} htmlFor="endDate">
-                End date
-              </label>
-              <input
-                id="endDate"
-                name="endDate"
-                type="date"
-                className={styles.input}
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-              />
-            </div>
-
             <div className={`${styles.field} ${styles.compactField}`}>
               <label className={styles.srOnly} htmlFor="petType">
                 Pet type

@@ -1,0 +1,107 @@
+.page {
+  width: 100%;
+  background-color: #ffffff;
+  max-width: 1250px;
+  border-radius: 1.2rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  padding: 1.8rem 1.6rem;
+  margin-top: 1.2rem;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.greeting {
+  margin: 0;
+  font-size: 2rem;
+  color: #183f39;
+}
+
+.balance {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+.balanceValue {
+  font-weight: 700;
+}
+
+.profileRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.6rem;
+  align-items: stretch;
+  margin-top: 1.4rem;
+}
+
+.section {
+  margin-top: 1.8rem;
+}
+
+.sectionTitle {
+  margin: 0 0 0.6rem 0;
+  font-size: 1.2rem;
+  color: #1f2937;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.petsSection {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  min-height: 100%;
+  box-shadow: none;
+}
+
+.petList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.placeholder {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+  padding: 1rem;
+  border: 1.4px dashed #d1d5db;
+  border-radius: 0.9rem;
+  background: #ffffff;
+}
+
+.cardColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .profileRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 1.2rem;
+  }
+
+  .greeting {
+    font-size: 1.6rem;
+  }
+}

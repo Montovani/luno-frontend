@@ -1,0 +1,90 @@
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.avatarWrap {
+  position: relative;
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: grid;
+  place-items: center;
+  color: #183f39;
+  font-weight: 700;
+  font-size: 1.6rem;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.badge {
+  position: absolute;
+  right: -6px;
+  bottom: 6px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  display: grid;
+  place-items: center;
+}
+
+.badge img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.text {
+  text-align: center;
+}
+
+.name {
+  margin: 0;
+  font-weight: 700;
+  color: #111827;
+  font-size: 1.1rem;
+}
+
+.location {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.button {
+  width: 100%;
+  max-width: 180px;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  background: #183f39;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(24, 63, 57, 0.25);
+}
