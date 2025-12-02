@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Private from './components/Private'
 import Profile from './pages/Profile'
+import Request from './pages/Request'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
         <Route path='/profile/:userId' element={<Profile />}></Route>
+        <Route path='request/:userId' element={<Private><Request /></Private>}></Route>
       </Routes>
     </>
   )

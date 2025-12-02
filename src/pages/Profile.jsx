@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import styles from "./Profile.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -7,6 +7,7 @@ function Profile() {
   const { userId } = useParams();
   const [userInfo, setUserInfo] = useState(null);
   const [userReviews, setUserReviews] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     getUserApiData();
@@ -31,6 +32,9 @@ function Profile() {
         console.log(error)
     }
   }
+  const handleRequest = ()=>{
+    navigate(`/request/${userId}`)
+  }
   console.log(userReviews)
   if (!userInfo || !userReviews) {
     return <h3>Loading...</h3>;
@@ -46,7 +50,7 @@ function Profile() {
           <p>Headline</p>
         </div>
         <div>
-          <button className={styles.buttonHeader}>Send Request</button>
+          <button onClick={handleRequest} className={styles.buttonHeader}>Send Request</button>
         </div>
       </div>
       <div className={styles.profileSectionContainer}>
@@ -115,11 +119,11 @@ function Profile() {
                 <div className={styles.reviewsContainer}>
                 {userReviews.map((each)=>{
                     return (
-                        <>
-                            <p>{each.review.owner.name}</p>
+                        <div key={each.review._id}>
+                            <p >{each.review.owner.name}</p>
                             <p>{each.review.text}</p>
                             <p>{each.review.stars} Stars</p>
-                        </>
+                        </div>
                     )
                 })}
                 </div>
