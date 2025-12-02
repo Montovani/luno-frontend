@@ -24,7 +24,7 @@ function Login() {
     }
     try {
     
-      const response = await axios.post('http://localhost:5005/api/auth/login',userBody)
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login`,userBody)
       
       localStorage.setItem("authToken", response.data.authToken)
 

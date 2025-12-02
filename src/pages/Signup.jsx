@@ -22,7 +22,7 @@ function Signup() {
       email,
       password
     }
-      await axios.post('http://localhost:5005/api/auth/signup',userBody)
+      await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/signup`,userBody)
       setName('')
       setCity('')
       setEmail('')
