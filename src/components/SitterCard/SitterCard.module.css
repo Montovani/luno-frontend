@@ -1,0 +1,35 @@
+.cardContainer {
+    margin: 1rem;
+    background-color: red;
+    width: 17rem;
+    height: 20.5rem;
+}
+.imgContainer {
+    background-color: grey;
+    border-radius: 1.2rem;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    height: 12rem;
+}
+.cardTitleSub p{
+    margin-top:0;
+    margin-bottom:0.5rem;
+    font-style: italic;
+}
+.cardTitleSub h3{
+    margin-top:0.5rem;
+    margin-bottom: 0;
+}
+.petCared {
+    display: flex;
+    gap: 0.5rem;
+}
+.petCared div{
+    background-color: blue;
+    border-radius: 5rem;
+    width: 6rem;
+}
+.petCared p{
+    margin: 0;
+    text-align: center;
+}
