@@ -8,6 +8,7 @@ import FindSitter from './pages/FindSitter'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Private from './components/Private'
+import Profile from './pages/Profile'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/pet-sitter' element={<FindSitter />}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
+        <Route path='/profile/:userId' element={<Profile />}></Route>
       </Routes>
     </>
   )
