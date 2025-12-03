@@ -19,7 +19,6 @@ function EditPets() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isUploading, setIsUploading] = useState(false)
   const [avatarUrl, setAvatarUrl] = useState(null)
-
   useEffect(()=>{
     getPetApiData()
   },[])

@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router";
 import styles from "./BookingCard.module.css";
 
 function BookingCard({ booking, variant }) {
   if (!booking) return null;
-  console.log(booking);
+  const navigate = useNavigate()
+
+  const handleCheckBooking = ()=>{
+    navigate(`/booking/${booking._id}`)
+  }
 
   // Pegamos o primeiro pet (se existir)
   const pet = booking.petCared?.[0];
@@ -61,7 +66,7 @@ function BookingCard({ booking, variant }) {
       ) : null}
 
       <div className={styles.actions}>
-        <button type="button" className={styles.secondaryButton}>
+        <button onClick={handleCheckBooking} type="button" className={styles.secondaryButton}>
           Check details
         </button>
       </div>

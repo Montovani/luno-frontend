@@ -34,8 +34,7 @@ function EditProfile() {
             <button className='button'>User Information</button>
             <button onClick={handlePetsBtn} className='button'>Pets</button>
         </div>
-        <h3>Current Information</h3>
-        <UserDetailsCard userInfo={userInfo} />
+    
         <h3>Edit Your Profile</h3>
         <EditProfileForm userInfo={userInfo} getUserApiData={getUserApiData}/>
     </div>

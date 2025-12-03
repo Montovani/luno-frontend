@@ -108,6 +108,25 @@ p{
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     border-radius: 0.5rem;
 }
+.bookingMessage{
+    margin-top: 2rem;
+    background-color: #3b2d7ae1;
+    color: #fff;
+    padding: 2rem;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.219);
+     border-radius: 0.5rem;
+     display: flex;
+     align-items: center;
+     gap: 2rem;
+}
+.avatarMessage{
+  width: 5rem;
+  height: 5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.425);
+  border-radius: 50%;
+  overflow: hidden;  
+}
 
     
 

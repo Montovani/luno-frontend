@@ -13,8 +13,11 @@ function EditProfileForm({userInfo, getUserApiData}) {
     const [errorMessage, setErrorMessage] = useState("")
     const [imageUrl, setImageUrl] = useState(userInfo.mainProfilePhoto)
     const [avatarUrl, setAvatarUrl] = useState(userInfo.avatar)
+    const [inputAddress, setInputAddress] = useState(userInfo.address)
     const [isUploading, setIsUploading] = useState(false)
-
+    const [inputHomeType, setInputHomeType] = useState(userInfo.homeType)
+    const[inputHomeInformation, setInputHomeInformation] = useState(userInfo.homeInformation)
+        
     const handleSubmit = async(e)=>{
         e.preventDefault()
         setErrorMessage("")
@@ -26,14 +29,15 @@ function EditProfileForm({userInfo, getUserApiData}) {
                 aboutUser: inputAbout,
                 petsCategoryAllowed: petsTakeCare,
                 avatar: avatarUrl,
-                mainProfilePhoto: imageUrl
+                mainProfilePhoto: imageUrl,
+                address: inputAddress,
+                homeType: inputHomeType,
+                homeInformation: inputHomeInformation
             }
             setIsSubmiting(true)
             await service.patch(`/user/${userInfo._id}`,body)
 
-            setInputName("")
-            setInputCity("")
-            setInputAbout("")
+           
             setIsSubmiting(false)
             getUserApiData()
         } catch (error) {
@@ -76,6 +80,18 @@ function EditProfileForm({userInfo, getUserApiData}) {
         console.log(error)
     }
     };
+    const handleRemovePet = (index)=>{
+        const petArrCopy = structuredClone(petsTakeCare)
+        console.log(petArrCopy)
+        petArrCopy.splice(index,1)
+        console.log(petArrCopy)
+        setPetsTakeCare(petArrCopy)
+    }
+    const handleRemoveHomeInfo = (index)=>{
+        const homeArrCopy = structuredClone(inputHomeInformation)
+        homeArrCopy.splice(index,1)
+        setInputHomeInformation(homeArrCopy)
+    }
     
     if(!userInfo){
         return <h3>Loading...</h3>
@@ -97,6 +113,13 @@ function EditProfileForm({userInfo, getUserApiData}) {
             value={inputCity}
             onChange={(e) => setInputCity(e.target.value)}
             />
+            <h4>Address</h4>
+            <input 
+            type="text" 
+            placeholder={userInfo.address}
+            value={inputAddress}
+            onChange={(e) => setInputAddress(e.target.value)}
+            />
             <h4>About You</h4>
             <textarea
             placeholder={userInfo.aboutUser? userInfo.aboutUser: "Add about you "}
@@ -104,14 +127,6 @@ function EditProfileForm({userInfo, getUserApiData}) {
             onChange={(e)=> setInputAbout(e.target.value)}
             />
             <h4>Pets Can Take Care</h4>
-            <div className={styles.takeCareContainer}> 
-            {petsTakeCare.length>0? (
-            petsTakeCare.map((pet,index)=>{
-                return <div key={index} className={styles.divPet}><p>{pet}</p></div>
-            })):(
-            <p className={styles.divPet}>No pets</p>
-            )}
-            </div>
             <select
                 onChange={(e) => {
                     const value = e.target.value;
@@ -133,6 +148,54 @@ function EditProfileForm({userInfo, getUserApiData}) {
                 <option value="medium dog">Medium Dog</option>
                 <option value="big dog">Big Dog</option>
             </select>
+            <div className={styles.takeCareContainer}> 
+            {petsTakeCare.length>0? (
+            petsTakeCare.map((pet,index)=>{
+                return <div key={index} className={styles.divPet}><p>{pet}</p><button type='button' onClick={()=> handleRemovePet(index)}>x</button></div>
+            })):(
+            <p className={styles.divPet}>No pets</p>
+            )}
+            </div>
+            <h4>Home Type</h4>
+            <select value={inputHomeType} onChange={(e)=> setInputHomeType(e.target.value)}>
+                <option value="">{inputHomeType}</option>
+                <option value="flat">Flat</option>
+                <option value="apartment">Apartment</option>
+                <option value="house">House</option>
+                <option value="boat">Boat</option>
+            </select>
+            <h4>Home Information</h4>
+            <select
+                onChange={(e) => {
+                    const value = e.target.value;
+                    if (!value) return;
+
+                    setInputHomeInformation((prev) => {
+                    
+                    if (prev.includes(value)){
+                        return prev;
+                    } else {
+                        return [...prev, value];
+                    }
+                    });
+                }}
+            >
+                <option value="">Select</option>
+                <option value="non-smoking">Non-smoking</option>
+                <option value="Pets not allowed on bed">Pets not allowed on bed</option>
+                <option value="Pets not allowed on furniture">Pets not allowed on furniture</option>
+                <option value="No kids present">No kids present</option>
+                <option value="Does not have garden">Does not have garden</option>
+                <option value="Stairs">Stairs</option>
+            </select>
+            <div className={styles.takeCareContainer}> 
+            {inputHomeInformation.length>0? (
+            inputHomeInformation.map((pet,index)=>{
+                return <div key={pet} className={styles.homeDiv}><p>{pet}</p><button type='button' onClick={()=> handleRemoveHomeInfo(index)}>x</button></div>
+            })):(
+            <p className={styles.divPet}>No information</p>
+            )}
+            </div>
             <div style={{display:'flex', gap:'1rem', flexWrap: 'wrap', marginTop:'2rem'}}>
                 <div>
                     <h4>Add/Edit Avatar Image</h4>
