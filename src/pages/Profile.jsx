@@ -74,10 +74,10 @@ function Profile() {
                 return(
                     <div key={pet._id} className={styles.userPetContainer}>
                         <div className={styles.avatarPet}>
-
+                              <img style={{width:'100%', objectFit:'cover'}} src={pet.avatar} alt="" />
                         </div>
                         <div>
-                            <p>{pet.name}</p>
+                            <p style={{fontWeight:'500'}}>{pet.name}</p>
                             <p>{pet.gender}</p>
                         </div>
                     </div>

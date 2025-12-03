@@ -8,11 +8,11 @@
     min-height: 60rem;
 }
 .avatarContainer{
-    border: 1px solid #ddd;
     width: 5.5rem;
     height: 5.5rem;
     border-radius: 10rem;
     overflow: hidden;
+    border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .headerContainer{
@@ -113,6 +113,9 @@ h4{
     height: 4.5rem;
     border-radius: 10rem;
     object-fit: cover;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .userPetContainer {
     display: flex;
