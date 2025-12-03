@@ -35,17 +35,19 @@ function Profile() {
   const handleRequest = ()=>{
     navigate(`/request/${userId}`)
   }
-  console.log(userReviews)
+
   if (!userInfo || !userReviews) {
     return <h3>Loading...</h3>;
   }
   return (
     <div className={styles.mainContainer}>
       <div className={styles.headerContainer}>
-        <div className={styles.avatarContainer}></div>
+        <div className={styles.avatarContainer}>
+          <img style={{width:'100%', objectFit:'cover'}} src={userInfo?.avatar} alt="" />
+        </div>
         <div>
           <h1>
-            {userInfo.name[0].toUpperCase().concat("", userInfo.name.slice(1))}
+            {userInfo?.name?.[0].toUpperCase().concat("", userInfo?.name?.slice(1))}
           </h1>
           <p>Headline</p>
         </div>
@@ -56,7 +58,7 @@ function Profile() {
       <div className={styles.profileSectionContainer}>
         <div className={styles.firstSection}>
           <div className={styles.mainPhotosContainer}>
-
+            <img style={{width:'100%',objectFit:'cover'}} src={userInfo?.mainProfilePhoto} alt="" />
           </div>
           <h3>About</h3>
           <p>{userInfo.aboutUser}</p>

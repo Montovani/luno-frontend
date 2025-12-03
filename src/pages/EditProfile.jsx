@@ -33,7 +33,6 @@ function EditProfile() {
         <div className={styles.headerContainer}>
             <button className='button'>User Information</button>
             <button onClick={handlePetsBtn} className='button'>Pets</button>
-            <button className='button'>Add Photos</button>
         </div>
         <h3>Current Information</h3>
         <UserDetailsCard userInfo={userInfo} />

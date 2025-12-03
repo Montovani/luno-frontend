@@ -11,6 +11,9 @@ function EditProfileForm({userInfo, getUserApiData}) {
     userInfo.petsCategoryAllowed);
     const[isSubmiting,setIsSubmiting] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
+    const [imageUrl, setImageUrl] = useState(userInfo.mainProfilePhoto)
+    const [avatarUrl, setAvatarUrl] = useState(userInfo.avatar)
+    const [isUploading, setIsUploading] = useState(false)
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
@@ -21,7 +24,9 @@ function EditProfileForm({userInfo, getUserApiData}) {
                 name: inputName,
                 city: inputCity,
                 aboutUser: inputAbout,
-                petsCategoryAllowed: petsTakeCare
+                petsCategoryAllowed: petsTakeCare,
+                avatar: avatarUrl,
+                mainProfilePhoto: imageUrl
             }
             setIsSubmiting(true)
             await service.patch(`/user/${userInfo._id}`,body)
@@ -38,6 +43,40 @@ function EditProfileForm({userInfo, getUserApiData}) {
         }
         
     }
+    
+        // below function should be the only function invoked when the file type input changes => onChange={handleFileUpload}
+    const handleFileUpload = async (e, typeOfImage) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    if (!e.target.files[0]) {
+        // to prevent accidentally clicking the choose file button and not selecting a file
+        return;
+    }
+
+    setIsUploading(true); 
+    const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
+    uploadData.append("image", e.target.files[0]);
+    //                   |
+    //     this name needs to match the name used in the middleware in the backend => uploader.single("image")
+
+    try {
+        const response = await service.post('/upload', uploadData)
+       
+        if(typeOfImage === 'avatar'){
+            setAvatarUrl(response.data.imageUrl)
+        }
+        if(typeOfImage === 'main'){
+            setImageUrl(response.data.imageUrl);
+        }
+        //                          |
+        //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
+
+        setIsUploading(false); // to stop the loading animation
+    } catch (error) {
+        navigate("/error");
+    }
+    };
+    
     if(!userInfo){
         return <h3>Loading...</h3>
     }
@@ -94,6 +133,46 @@ function EditProfileForm({userInfo, getUserApiData}) {
                 <option value="medium dog">Medium Dog</option>
                 <option value="big dog">Big Dog</option>
             </select>
+            <div style={{display:'flex', gap:'1rem', flexWrap: 'wrap', marginTop:'2rem'}}>
+                <div>
+                    <h4>Add/Edit Avatar Image</h4>
+                    <input
+                        type="file"
+                        name="image"
+                        onChange={(e) => handleFileUpload(e, "avatar")}
+                        disabled={isUploading}
+                    />
+                    <div>
+                        <button onClick={()=> setAvatarUrl(null)}>Delete</button>
+                    </div>
+                    {/* below disabled prevents the user from attempting another upload while one is already happening */}
+                </div>;
+
+                {/* to render a loading message or spinner while uploading the picture */}
+                {isUploading ? <h3>... uploading image</h3> : null}
+
+                {/* below line will render a preview of the image from cloudinary */}
+                {avatarUrl ? (<div><img src={avatarUrl} alt="img" width={200} /></div>) : null}
+                <div>
+                    <h4>Add/Edit Profile Image</h4>
+                    <input
+                        type="file"
+                        name="image"
+                        onChange={(e) => handleFileUpload(e, "main")}
+                        disabled={isUploading}
+                    />
+                    <div>
+                        <button onClick={()=> setImageUrl(null)}>Delete</button>
+                    </div>
+                    {/* below disabled prevents the user from attempting another upload while one is already happening */}
+                </div>;
+
+                {/* to render a loading message or spinner while uploading the picture */}
+                {isUploading ? <h3>... uploading image</h3> : null}
+
+                {/* below line will render a preview of the image from cloudinary */}
+                {imageUrl ? (<div><img src={imageUrl} alt="img" width={200} /></div>) : null}
+            </div>
                  {errorMessage ? (
                             <p className={styles.errorBox}>{errorMessage}</p>
                           ) : null}
