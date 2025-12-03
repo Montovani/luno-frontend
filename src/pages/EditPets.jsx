@@ -105,7 +105,7 @@ const handleFileUpload = async (e) => {
 
         setIsUploading(false); // to stop the loading animation
     } catch (error) {
-        navigate("/error");
+        console.log(error)
     }
     };
 

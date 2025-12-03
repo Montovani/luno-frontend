@@ -1,6 +1,5 @@
 .container {
   flex: 2;                        /* ocupa 2/3 */
-  background-color: rgb(196, 193, 193);
   
   display: flex;
   flex-wrap: wrap;

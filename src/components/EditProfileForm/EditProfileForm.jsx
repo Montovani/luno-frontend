@@ -73,7 +73,7 @@ function EditProfileForm({userInfo, getUserApiData}) {
 
         setIsUploading(false); // to stop the loading animation
     } catch (error) {
-        navigate("/error");
+        console.log(error)
     }
     };
     
