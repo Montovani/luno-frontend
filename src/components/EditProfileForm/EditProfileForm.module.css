@@ -1,0 +1,78 @@
+.editProfileFormContainer {
+    width: 80%;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.2rem 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.editProfileFormContainer h4{
+    font-size: 1.8rem;
+    margin: 0;
+    margin-top:0.5rem;
+}
+.editProfileFormContainer input {
+    width: 80%;
+    background-color: #eceef3;
+    height: 2.5rem;
+    border: 1px solid rgb(238, 233, 233);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+    color:rgb(46, 45, 45);
+    font-size: 1.2rem;
+}
+.editProfileFormContainer textarea {
+    width: 80%;
+    background-color: #eceef3;
+    height: 3.5rem;
+    border: 1px solid rgb(238, 233, 233);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+    color:rgb(46, 45, 45);
+    font-size: 1.2rem;
+    resize: none;
+}
+.divPet{
+    background-color: #183F39;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    padding: 1rem;
+    width: 8rem;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.editProfileFormContainer select {
+    min-width: 25%;
+    background-color: #eceef3;
+    height: 3.5rem;
+    border: 1px solid rgb(238, 233, 233);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+    color:rgb(46, 45, 45);
+    font-size: 1.2rem;
+    margin-top: 2rem;
+} 
+.takeCareContainer {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.btnSaveForm{
+    display: flex;
+    justify-content: flex-end;
+}
+.errorBox {
+  background: #ffe5e5;
+  border: 1px solid #ff6b6b;
+  color: #b91c1c;
+  padding: 0.8rem 1rem;
+  border-radius: 0.7rem;
+  font-size: 0.95rem;
+  margin: 0;
+  margin-top: 1rem;
+}

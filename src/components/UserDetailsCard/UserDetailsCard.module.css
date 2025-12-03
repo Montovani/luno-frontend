@@ -1,0 +1,12 @@
+.userDetailsContainer {
+    width: 80%;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.2rem 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.userDetailsContainer p,ul,li {
+    margin:0;
+}
