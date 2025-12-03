@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import styles from "./UserCard.module.css";
 
-function UserCard({ name, location, avatar, badgeAvatar }) {
+function UserCard({ name, location, avatar, badgeAvatar, type }) {
   const initial = name ? name[0].toUpperCase() : "U";
   const navigate = useNavigate()
   const handleEditProfile = ()=>{
@@ -31,10 +31,11 @@ function UserCard({ name, location, avatar, badgeAvatar }) {
           {location ? `Location: ${location}` : "Add your location"}
         </p>
       </div>
-
-      <button onClick={handleEditProfile} className={styles.button} type="button">
+       {type==="booking"?
+       null:
+       (<button onClick={handleEditProfile} className={styles.button} type="button">
         Edit information
-      </button>
+      </button>)} 
     </div>
   );
 }

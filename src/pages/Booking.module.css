@@ -1,0 +1,132 @@
+.bookingContainer {
+    background-color: #fff;
+    max-width: 1250px;
+    border-radius: 1.2rem;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin-top: 15px;
+    min-height: 80rem;
+    box-sizing: border-box;
+}
+.section {
+    margin-top: 1.4rem;
+    display: flex;
+    gap: 2rem;
+}
+.firstHalf {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 1.2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.226);
+    padding: 1.5rem;
+    top:40px;
+    max-height: 50vh; 
+    overflow-y: auto;
+    position: sticky;
+}
+.secondHalf {
+    flex: 2;
+   
+    min-height: 80rem;
+}
+.title{
+    margin:0;
+    color:#183F39;
+}
+.dateContainer{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+p{
+    margin: 0;
+    width: auto;
+}
+.firstHalf h4{
+    margin: 0;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+.firstHalf h3{
+    margin: 0;
+    margin-top:1rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.firstHalf textarea{
+    margin-top: 1.5rem;
+    font-size:1rem;
+    width: 80%;
+    height: 10rem;
+    resize: none;
+    background-color: #eceef3;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+    color: rgb(46, 45, 45);
+    border: 1px solid rgb(238, 233, 233);
+}
+.statusContainer{
+    display: flex;
+    flex-direction: flex-start;
+    gap: 2rem;
+}
+.cancelBtn{
+    margin-top: 1.1rem;
+    background-color: #df6060;
+}
+.sendReviewBtn{
+    background-color: #183F39;
+    margin-top: 1rem;
+}
+.secondHalf h4{
+    margin: 0;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+.secondHalf h3{
+    margin: 0;
+    margin-top: 1rem;
+    font-weight: 400;
+}
+.peopleContainer{
+    display:flex;
+    justify-content: space-between;
+    gap:1rem;
+}
+.host {
+    flex: 1;
+}
+.requester{
+    flex: 1;
+}
+.mapContainer{
+    width: 90%;
+    height: 18.75rem;
+    margin: 0 auto;
+    margin-top:1rem;
+    background-color: #eceef3;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+}
+
+    
+
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    /* .secondHalf{
+        position:0;
+        position: absolute;
+    } */
+    .firstHalf{
+        height: auto;
+        position: static;
+        top: 0;
+    }
+    .peopleContainer {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

@@ -12,6 +12,7 @@ import Profile from './pages/Profile'
 import Request from './pages/Request'
 import EditProfile from './pages/EditProfile'
 import EditPets from './pages/EditPets'
+import Booking from './pages/Booking'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         ></Route>
         <Route path='/edit-profile' element={<Private><EditProfile/></Private>}></Route>
         <Route path='/edit-pets' element={<Private><EditPets/></Private>}></Route>
+        <Route path='/booking/:bookingId' element={<Private><Booking/></Private>}></Route>
       </Routes>
     </>
   )

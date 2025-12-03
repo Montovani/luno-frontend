@@ -116,6 +116,45 @@
   box-shadow: 0 10px 22px rgba(102, 126, 234, 0.25);
 }
 
+.minimalWrapper {
+  margin-top: 0.4rem;
+}
+
+.minimalCard {
+  background: linear-gradient(145deg, #fefcf8 0%, #f7f2e9 100%);
+  border: 1px solid #e6e0d4;
+  box-shadow: none;
+  padding: 0.7rem 0.85rem;
+}
+
+.minimalRow {
+  gap: 0.55rem;
+}
+
+.minimalField {
+  min-width: 140px;
+}
+
+.minimalInput {
+  background: #ffffff;
+  border-color: #dcd3c1;
+  padding: 0.65rem 0.9rem;
+}
+
+.minimalButton {
+  background: #183f39;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 0.72rem 1.15rem;
+  box-shadow: 0 12px 24px rgba(24, 63, 57, 0.2);
+  font-weight: 700;
+}
+
+.minimalButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(24, 63, 57, 0.22);
+}
+
 @media (max-width: 768px) {
   .formRow {
     flex-direction: column;

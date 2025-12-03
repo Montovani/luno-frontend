@@ -8,10 +8,8 @@ const petTypes = [
   "Cat",
 ];
 
-function Search({setSearch}) {
+function Search({ setSearch = () => {}, variant = "default" }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
   const [petType, setPetType] = useState("");
 
   const handleSubmit = (event) => {
@@ -19,17 +17,20 @@ function Search({setSearch}) {
     const searchObj = {
       petType,
       city: searchQuery
+    };
+    if (typeof setSearch === "function") {
+      setSearch(searchObj);
     }
-    setSearch(searchObj)
-    console.log('achieved')
   };
 
+  const isMinimal = variant === "minimal";
+
   return (
-    <section className={styles.wrapper}>
-      <div className={styles.card}>
+    <section className={`${styles.wrapper} ${isMinimal ? styles.minimalWrapper : ""}`}>
+      <div className={`${styles.card} ${isMinimal ? styles.minimalCard : ""}`}>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <div className={styles.formRow}>
-            <div className={`${styles.field} ${styles.searchField}`}>
+          <div className={`${styles.formRow} ${isMinimal ? styles.minimalRow : ""}`}>
+            <div className={`${styles.field} ${styles.searchField} ${isMinimal ? styles.minimalField : ""}`}>
               <label className={styles.srOnly} htmlFor="searchQuery">
                 Location or sitter name
               </label>
@@ -37,24 +38,24 @@ function Search({setSearch}) {
                 id="searchQuery"
                 name="searchQuery"
                 type="search"
-                placeholder="Amsterdam"
-                className={styles.input}
+                placeholder="Busque por cidade ou nome"
+                className={`${styles.input} ${isMinimal ? styles.minimalInput : ""}`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
 
-            <button type="submit" className={styles.button}>
+            <button type="submit" className={`${styles.button} ${isMinimal ? styles.minimalButton : ""}`}>
               Search
             </button>
-            <div className={`${styles.field} ${styles.compactField}`}>
+            <div className={`${styles.field} ${styles.compactField} ${isMinimal ? styles.minimalField : ""}`}>
               <label className={styles.srOnly} htmlFor="petType">
                 Pet type
               </label>
               <select
                 id="petType"
                 name="petType"
-                className={`${styles.input} ${styles.select}`}
+                className={`${styles.input} ${styles.select} ${isMinimal ? styles.minimalInput : ""}`}
                 value={petType}
                 onChange={(e) => setPetType(e.target.value)}
               >
