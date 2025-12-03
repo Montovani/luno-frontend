@@ -4,8 +4,10 @@ import UserDetailsCard from '../components/UserDetailsCard/UserDetailsCard'
 import styles from './EditProfile.module.css'
 import service from '../../services/config.services'
 import EditProfileForm from '../components/EditProfileForm/EditProfileForm'
+import { useNavigate } from 'react-router'
 
 function EditProfile() {
+    const navigate = useNavigate()
     const [userInfo, setUserInfo] = useState()
 
     useEffect(()=>{
@@ -20,6 +22,9 @@ function EditProfile() {
             console.log(error)
         }
     }
+    const handlePetsBtn = ()=>{
+        navigate('/edit-pets')
+    }
     if(!userInfo){
         return <h3>Loading...</h3>
     }
@@ -27,7 +32,7 @@ function EditProfile() {
     <div className={styles.mainContainer}>
         <div className={styles.headerContainer}>
             <button className='button'>User Information</button>
-            <button className='button'>Pets</button>
+            <button onClick={handlePetsBtn} className='button'>Pets</button>
             <button className='button'>Add Photos</button>
         </div>
         <h3>Current Information</h3>

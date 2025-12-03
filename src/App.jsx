@@ -11,6 +11,7 @@ import Private from './components/Private'
 import Profile from './pages/Profile'
 import Request from './pages/Request'
 import EditProfile from './pages/EditProfile'
+import EditPets from './pages/EditPets'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/request/:userId' element={<Private><Request /></Private>}
         ></Route>
         <Route path='/edit-profile' element={<Private><EditProfile/></Private>}></Route>
+        <Route path='/edit-pets' element={<Private><EditPets/></Private>}></Route>
       </Routes>
     </>
   )
