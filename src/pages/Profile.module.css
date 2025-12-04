@@ -44,8 +44,8 @@ h1{
      gap: 2rem;
 }
 .avatarMessage{
-  width: 5rem;
-  height: 5rem;
+  max-width: 4rem;
+  max-height: 4rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.425);
   border-radius: 50%;
   overflow: hidden;  
@@ -201,5 +201,8 @@ h4{
     }
     .mainContainer {
         min-height: 100dvh;
+    }
+    .bookingMessage{
+        flex-direction: column;
     }
 }

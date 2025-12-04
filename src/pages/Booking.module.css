@@ -127,6 +127,7 @@ p{
     border-radius: 0.5rem;
 }
 .bookingMessage{
+    flex:1;
     margin-top: 2rem;
     background-color: #3b2d7ae1;
     color: #fff;
@@ -139,8 +140,8 @@ p{
      gap: 2rem;
 }
 .avatarMessage{
-  width: 5rem;
-  height: 5rem;
+  max-width: 4rem;
+  max-height: 4rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.425);
   border-radius: 50%;
   overflow: hidden;  
@@ -165,5 +166,8 @@ p{
     .peopleContainer {
         flex-direction: column;
         gap: 1.5rem;
+    }
+    .bookingMessage{
+        flex-direction: column;
     }
 }

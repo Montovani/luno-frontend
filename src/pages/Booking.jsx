@@ -24,7 +24,6 @@ function Booking() {
     const [textReview, setTextReview] = useState("")
     const [stars, setStars] = useState(null)
     const[reviews, setReviews] = useState(null)
- 
    useEffect(()=>{
        getBookingApiData()
        getReviewApiData()
@@ -67,7 +66,24 @@ function Booking() {
             
         }
     }
-
+    const handleCancelBtn = async() => {
+    const statusToSend = 'canceled';
+    setNewStatus(statusToSend);
+    
+    try {
+        await service.patch(`/booking/${bookingId}`, {
+        status: statusToSend
+        });
+        getBookingApiData();
+    } catch (error) {
+        console.log(error);
+        setIsStatusEditing(false);
+        setErrorMessage(error.response?.data?.errorMessage || "Something went wrong");
+        setTimeout(() => {
+        setErrorMessage("");
+        }, 3000);
+    }
+    }
     const handleCreateNewReview = async()=>{
         try {
             const body = {
@@ -86,6 +102,7 @@ function Booking() {
     }
     const isLoggedHost = (loggedUserId === hostInfo._id)
     const isLoggedRequester = (loggedUserId === requesterInfo._id)
+    console.log(reviews)
   return (
     <div className={styles.bookingContainer}>
         <h3 className={styles.title}>Pet Sitting Book</h3>
@@ -140,8 +157,8 @@ function Booking() {
                 }
                 <h3>Total of Lunies</h3>
                 <h3>{booking.lunies}</h3>
-                <button className={styles.cancelBtn}>Cancel Reservation</button>
-                {booking.status === 'completed' && isLoggedRequester && !reviews? (
+                <button onClick={handleCancelBtn} className={styles.cancelBtn}>Cancel Reservation</button>
+                {booking.status === 'completed' && isLoggedRequester && !reviews.length>0? (
                     <>
                     <h4>Booking Review</h4>
                     <p>Review the host to help the community</p>
@@ -210,14 +227,14 @@ function Booking() {
                         <p>{booking.message}</p>
                     </div>
                     <h3>Review</h3>
-                    {reviews? (
+                    {reviews.length>0? (
                         <div className={styles.bookingMessage}>
                             <div className={styles.avatarMessage}>
                                 <img style={{width:'100%', objectFit:'cover'}}src={requesterInfo.avatar} />
                             </div>
                             <p>{reviews[0]?.text}</p>
                         </div>
-                    ):null}
+                    ):<p>You must complete the booking to create a review</p>}
                 </div>
             </div>
         </section>
