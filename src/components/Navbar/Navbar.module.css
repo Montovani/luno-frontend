@@ -14,6 +14,10 @@
     padding: 0.5rem 1rem;
     border-radius: 5rem;
     background-color: white;
+    border: 1px solid rgb(238, 233, 233);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    color: rgb(46, 45, 45);
+    font-size: 1.1rem;
 
 }
 .linksContainer {
