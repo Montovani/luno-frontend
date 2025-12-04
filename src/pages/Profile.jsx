@@ -6,12 +6,12 @@ import axios from "axios";
 function Profile() {
   const { userId } = useParams();
   const [userInfo, setUserInfo] = useState(null);
-  const [userReviews, setUserReviews] = useState(null)
-  const navigate = useNavigate()
+  const [userReviews, setUserReviews] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUserApiData();
-    getUserApiReviews()
+    getUserApiReviews();
   }, []);
 
   const getUserApiData = async () => {
@@ -24,17 +24,19 @@ function Profile() {
       console.log(error);
     }
   };
-  const getUserApiReviews = async()=>{
+  const getUserApiReviews = async () => {
     try {
-        const response = await axios.get( `${import.meta.env.VITE_SERVER_URL}/api/review/user/${userId}`)
-        setUserReviews(response.data)
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/api/review/user/${userId}`
+      );
+      setUserReviews(response.data);
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-  }
-  const handleRequest = ()=>{
-    navigate(`/request/${userId}`)
-  }
+  };
+  const handleRequest = () => {
+    navigate(`/request/${userId}`);
+  };
 
   if (!userInfo || !userReviews) {
     return <h3>Loading...</h3>;
@@ -43,22 +45,34 @@ function Profile() {
     <div className={styles.mainContainer}>
       <div className={styles.headerContainer}>
         <div className={styles.avatarContainer}>
-          <img style={{width:'100%', objectFit:'cover'}} src={userInfo?.avatar} alt="" />
+          <img
+            style={{ width: "100%", objectFit: "cover" }}
+            src={userInfo?.avatar}
+            alt=""
+          />
         </div>
         <div>
           <h1>
-            {userInfo?.name?.[0].toUpperCase().concat("", userInfo?.name?.slice(1))}
+            {userInfo?.name?.[0]
+              .toUpperCase()
+              .concat("", userInfo?.name?.slice(1))}
           </h1>
           <p>Headline</p>
         </div>
         <div>
-          <button onClick={handleRequest} className={styles.buttonHeader}>Send Request</button>
+          <button onClick={handleRequest} className={styles.buttonHeader}>
+            Send Request
+          </button>
         </div>
       </div>
       <div className={styles.profileSectionContainer}>
         <div className={styles.firstSection}>
           <div className={styles.mainPhotosContainer}>
-            <img style={{width:'100%',objectFit:'cover'}} src={userInfo?.mainProfilePhoto} alt="" />
+            <img
+              style={{ width: "100%", objectFit: "cover" }}
+              src={userInfo?.mainProfilePhoto}
+              alt=""
+            />
           </div>
           <h3>About</h3>
           <p>{userInfo.aboutUser}</p>
@@ -70,18 +84,22 @@ function Profile() {
                   .concat("", userInfo.name.slice(1))}
                 's Pet
               </h4>
-              {userInfo.pets.map((pet)=>{
-                return(
-                    <div key={pet._id} className={styles.userPetContainer}>
-                        <div className={styles.avatarPet}>
-                              <img style={{width:'100%', objectFit:'cover'}} src={pet.avatar} alt="" />
-                        </div>
-                        <div>
-                            <p style={{fontWeight:'500'}}>{pet.name}</p>
-                            <p>{pet.gender}</p>
-                        </div>
+              {userInfo.pets.map((pet) => {
+                return (
+                  <div key={pet._id} className={styles.userPetContainer}>
+                    <div className={styles.avatarPet}>
+                      <img
+                        style={{ width: "100%", objectFit: "cover" }}
+                        src={pet.avatar}
+                        alt=""
+                      />
                     </div>
-                )
+                    <div>
+                      <p style={{ fontWeight: "500" }}>{pet.name}</p>
+                      <p>{pet.gender}</p>
+                    </div>
+                  </div>
+                );
               })}
             </div>
             <div>
@@ -92,47 +110,59 @@ function Profile() {
                 Can Take Care:
               </h4>
               <div className={styles.petCared}>
-              {userInfo.petsCategoryAllowed.map((pet, index) => {
-                return (
-                  <div key={index}>
-                    <p>{pet}</p>
-                  </div>
-                );
-              })}
+                {userInfo.petsCategoryAllowed.map((pet, index) => {
+                  return (
+                    <div key={index}>
+                      <p>{pet}</p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
           <div>
-            <h3>{userInfo.name[0].toUpperCase().concat("",userInfo.name.slice(1))}' Home</h3>
+            <h3>
+              {userInfo.name[0]
+                .toUpperCase()
+                .concat("", userInfo.name.slice(1))}
+              ' Home
+            </h3>
             <div className={styles.homeRules}>
-                {userInfo.homeInformation.map((homeInfo,index)=>{
-                    return (
-                        <div key={index}>
-                            <p>{homeInfo}</p>
-                        </div>
-                    )
-                })}
+              {userInfo.homeInformation.map((homeInfo, index) => {
+                return (
+                  <div key={index}>
+                    <p>{homeInfo}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
         <div className={styles.secondSection}>
-            <div>
-                <h3>What people say about {userInfo.name}</h3>
-                <div className={styles.reviewsContainer}>
-                {userReviews.map((each)=>{
-                    return (
-                        <div key={each.review._id}>
-                            <p >{each.review.owner.name}</p>
-                            <p>{each.review.text}</p>
-                            <p>{each.review.stars} Stars</p>
-                        </div>
-                    )
-                })}
-                </div>
+          <div>
+            <h3>What people say about {userInfo.name}</h3>
+            <div className={styles.reviewsContainer}>
+              {userReviews.map((item) => {
+                return (
+                  <div key={item._id}>
+                    {console.log(item)}
+                    <div className={styles.bookingMessage}>
+                      <div className={styles.avatarMessage}>
+                        <img
+                          style={{ width: "100%", objectFit: "cover" }}
+                          src={item.review?.owner?.avatar}
+                        />
+                      </div>
+                      <p>{item.review?.owner?.name}</p>
+                      <p>{item.review?.text}</p>
+                      <p>{item.review?.stars} Stars</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <div className={styles.mapContainer}>
-
-            </div>
+          </div>
+          <div className={styles.mapContainer}></div>
         </div>
       </div>
     </div>

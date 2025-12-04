@@ -5,7 +5,11 @@ import { useEffect, useState } from 'react';
 import service from '../../services/config.services';
 import { Link, useParams } from 'react-router';
 import { capitalize } from '../utils/functions';
+import { AuthContext } from '../context/auth.context';
+import { useContext } from 'react';
+
 function Booking() {
+    // I can destructure booking to be better organized instead of having a bunch of states.
     const [hostInfo, setHostInfo] = useState(null)
     const [requesterInfo, setRequesterInfo] = useState(null)
     const [pets, setPets] = useState(null)
@@ -13,10 +17,17 @@ function Booking() {
     const {bookingId} = useParams()
     const [isreviewAllowed, setIsReviewAllowed] = useState()
     const [bookingStatus, setBookingStatus] = useState()
-
-
-    useEffect(()=>{
-        getBookingApiData()
+    const [isStatusEditing, setIsStatusEditing] = useState(false)
+    const [newStatus, setNewStatus] = useState(null)
+    const {loggedUserId} = useContext(AuthContext)
+    const [errorMessage, setErrorMessage] = useState("")
+    const [textReview, setTextReview] = useState("")
+    const [stars, setStars] = useState(null)
+    const[reviews, setReviews] = useState(null)
+ 
+   useEffect(()=>{
+       getBookingApiData()
+       getReviewApiData()
     },[])
     const getBookingApiData = async()=>{
         try {
@@ -25,7 +36,47 @@ function Booking() {
             setHostInfo(response.data.host)
             setRequesterInfo(response.data.requester)
             setPets(response.data.petCared)
-            console.log(response.data)
+        } catch (error) {
+            console.log(error) 
+        }
+    }
+    const handleStatusChangeBtn = ()=>{
+        setIsStatusEditing(true)
+    }
+    const getReviewApiData = async()=>{
+        const response = await service.get(`/review/booking/${bookingId}`)
+        
+        setReviews(response.data)
+    }
+    console.log(reviews)
+    const handleSaveNewStatus = async()=>{
+        const body = {
+            status: newStatus
+        }
+        try {
+            await service.patch(`/booking/${bookingId}`,body)
+            setIsStatusEditing(false)
+            getBookingApiData()
+        } catch (error) {
+            console.log(error)
+            setIsStatusEditing(false)
+            setErrorMessage(error.response.data.errorMessage || "Something went wrong")
+            setTimeout(()=>{
+                setErrorMessage("")
+            },3000)
+            
+        }
+    }
+
+    const handleCreateNewReview = async()=>{
+        try {
+            const body = {
+                text: textReview,
+                stars,
+                bookSitting: bookingId
+            }
+            await service.post('/review',body)
+            getBookingApiData()
         } catch (error) {
             console.log(error)
         }
@@ -33,7 +84,8 @@ function Booking() {
     if(!hostInfo || !requesterInfo || !pets || !booking){
         return <h4>Loading...</h4>
     }
-    console.log(pets)
+    const isLoggedHost = (loggedUserId === hostInfo._id)
+    const isLoggedRequester = (loggedUserId === requesterInfo._id)
   return (
     <div className={styles.bookingContainer}>
         <h3 className={styles.title}>Pet Sitting Book</h3>
@@ -54,23 +106,69 @@ function Booking() {
                     </div>
                 </div>
                 <h4>Status of Reservation </h4>
+                {isStatusEditing?
+                (
+                    <>
+                    <select className={styles.changeStatus}  value={newStatus} onChange={(e)=>setNewStatus(e.target.value)} >
+                        {isLoggedHost &&
+                        <>
+                        <option value="select">Select</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="in progress">In Progress</option>
+                        </> 
+                        }
+                        {isLoggedRequester &&
+                        <>
+                        <option value="select">Select</option>
+                        <option value="completed">Completed</option>
+                        </>
+                        }
+                    </select>
+                    <button onClick={handleSaveNewStatus}>Save new Status</button>
+                    <div>
+
+                    </div>
+                    </>
+                ):(
                 <div className={styles.statusContainer}>
                     <p>{capitalize(booking.status)}</p>
-                    <button>Change</button>
+                    <button onClick={handleStatusChangeBtn}>Change</button>
                 </div>
+                )}
+                {errorMessage &&
+                    <p className={styles.errorBox}>{errorMessage}</p>
+                }
                 <h3>Total of Lunies</h3>
                 <h3>{booking.lunies}</h3>
                 <button className={styles.cancelBtn}>Cancel Reservation</button>
-                <h4>Booking Review</h4>
-                <p>Review the host to help the community</p>
-                <form>
-                    <textarea>
+                {booking.status === 'completed' && isLoggedRequester && !reviews? (
+                    <>
+                    <h4>Booking Review</h4>
+                    <p>Review the host to help the community</p>
+                    <form>
+                        <textarea
+                        value={textReview}
+                        onChange={(e)=>setTextReview(e.target.value)}>
 
-                    </textarea>
-                    <div>
-                        <button className={styles.sendReviewBtn}> Submit Review</button>
-                    </div>
-                </form>
+                        </textarea>
+                        <div>
+                            <p>Stars:</p>
+                            <select className={styles.changeStatus} value={stars} onChange={(e)=>setStars(Number(e.target.value))}>
+                                <option value="0">Select</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button onClick={handleCreateNewReview} className={styles.sendReviewBtn}> Submit Review</button>
+                        </div>
+                    </form>                    
+                    </>
+
+                ):null}
             </div>
             <div className={styles.secondHalf}>
                 <div className={styles.peopleContainer}>
@@ -112,12 +210,14 @@ function Booking() {
                         <p>{booking.message}</p>
                     </div>
                     <h3>Review</h3>
-                    <div className={styles.bookingMessage}>
-                        <div className={styles.avatarMessage}>
-                            <img style={{width:'100%', objectFit:'cover'}}src={requesterInfo.avatar} />
+                    {reviews? (
+                        <div className={styles.bookingMessage}>
+                            <div className={styles.avatarMessage}>
+                                <img style={{width:'100%', objectFit:'cover'}}src={requesterInfo.avatar} />
+                            </div>
+                            <p>{reviews[0]?.text}</p>
                         </div>
-                        <p>{booking.message}</p>
-                    </div>
+                    ):null}
                 </div>
             </div>
         </section>

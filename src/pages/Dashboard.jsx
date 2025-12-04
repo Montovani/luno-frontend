@@ -117,7 +117,7 @@ function Dashboard() {
           ) : (
             bookings
             .filter((booking)=>{
-              return booking.status === 'completed'
+              return ['in progress', 'confirmed', 'completed', 'canceled'].includes(booking.status)
             })
             .map((booking) => (
               <BookingCard
