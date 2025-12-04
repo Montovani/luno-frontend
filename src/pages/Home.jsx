@@ -30,21 +30,21 @@ const steps = [
     title: "Find a trusted sitter nearby",
     description: "Search by city and pet type to match with a verified sitter close to you.",
     image:
-      "https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=800&q=80",
+      "https://res.cloudinary.com/dbrf678f6/image/upload/v1764870493/ChatGPT_Image_4_de_dez._de_2025_18_48_05_nid10n.png",
     alt: "Illustration of a person walking a dog in the neighborhood.",
   },
   {
     title: "Drop your pet at their home",
     description: "Settle your pet in a calm home environment and share the routine they love.",
     image:
-      "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=800&q=80",
+      "https://res.cloudinary.com/dbrf678f6/image/upload/v1764870654/ChatGPT_Image_4_de_dez._de_2025_18_50_21_hqvmbd.png",
     alt: "Illustration of a pet resting in a cozy home.",
   },
   {
     title: "Give Lunies and leave a review",
     description: "Reward with Lunies and add a review so the community knows who to trust.",
     image:
-      "https://images.unsplash.com/photo-1494256997604-768d1f608cac?auto=format&fit=crop&w=800&q=80",
+      "https://res.cloudinary.com/dbrf678f6/image/upload/v1764870798/ChatGPT_Image_4_de_dez._de_2025_18_52_46_p0tmna.png",
     alt: "Illustration of a person giving a thumbs up with a pet nearby.",
   },
 ];
