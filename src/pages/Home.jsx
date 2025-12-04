@@ -14,7 +14,7 @@ const galleryImages = [
     variant: "wide",
   },
   {
-    src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
+    src: "https://res.cloudinary.com/dbrf678f6/image/upload/v1764869684/ChatGPT_Image_4_de_dez._de_2025_18_34_34_eub8vx.png",
     alt: "Person cuddling a cat at home.",
     variant: "tall",
   },
