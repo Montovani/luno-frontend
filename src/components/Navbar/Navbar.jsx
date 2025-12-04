@@ -5,7 +5,7 @@ import { useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
 
 function Navbar() {
-    const {authenticateUser, isLoggedIn} = useContext(AuthContext)
+    const {authenticateUser, isLoggedIn, loggedUserId} = useContext(AuthContext)
     const navigate = useNavigate()
     const handleLogin = ()=>{
         navigate('/login')
@@ -29,12 +29,22 @@ function Navbar() {
   return (
     <nav className={styles.navContainer}>
         <div className={styles.imgContainer}>
+            <Link to='/'>
             <img className={styles.imgStyle} src={Logo} alt="" />
+            </Link>
         </div>
         <div className={styles.linksContainer}>
-            <Link to="/">Home</Link>
-            <Link to="/pet-sitter">Find a Sitter</Link>
-            
+            {isLoggedIn?
+            <>
+                <Link to="/">Home</Link>
+                <Link to="/pet-sitter">Find a Sitter</Link>
+                <Link to={`/profile/${loggedUserId}`}>Your Profile</Link>
+            </>:
+            <>
+                <Link to="/">Home</Link>
+                <Link to="/pet-sitter">Find a Sitter</Link>
+            </>
+            }  
         </div>
         <div className={styles.btnContainer}>
             

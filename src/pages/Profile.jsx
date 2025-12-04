@@ -12,7 +12,7 @@ function Profile() {
   useEffect(() => {
     getUserApiData();
     getUserApiReviews();
-  }, []);
+  }, [userId]);
 
   const getUserApiData = async () => {
     try {
