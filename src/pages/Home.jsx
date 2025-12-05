@@ -4,7 +4,7 @@ import styles from "./Home.module.css";
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=80",
+    src: "https://res.cloudinary.com/dbrf678f6/image/upload/v1764869684/ChatGPT_Image_4_de_dez._de_2025_18_34_34_eub8vx.png",
     alt: "Golden puppy looking up.",
     variant: "wide",
   },
@@ -14,7 +14,7 @@ const galleryImages = [
     variant: "wide",
   },
   {
-    src: "https://res.cloudinary.com/dbrf678f6/image/upload/v1764869684/ChatGPT_Image_4_de_dez._de_2025_18_34_34_eub8vx.png",
+    src: "https://res.cloudinary.com/dbrf678f6/image/upload/v1764937558/Screenshot_2025-12-05_at_13.25.49_ea4bm7.png",
     alt: "Person cuddling a cat at home.",
     variant: "tall",
   },
