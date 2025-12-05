@@ -7,6 +7,7 @@ import { Link, useParams } from 'react-router';
 import { capitalize } from '../utils/functions';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
 function Booking() {
     // I can destructure booking to be better organized instead of having a bunch of states.
@@ -24,6 +25,7 @@ function Booking() {
     const [textReview, setTextReview] = useState("")
     const [stars, setStars] = useState(null)
     const[reviews, setReviews] = useState(null)
+    const [ center, setCenter ] = useState(null)
    useEffect(()=>{
        getBookingApiData()
        getReviewApiData()
@@ -35,6 +37,7 @@ function Booking() {
             setHostInfo(response.data.host)
             setRequesterInfo(response.data.requester)
             setPets(response.data.petCared)
+            setCenter(response.data.host.coordinates)
         } catch (error) {
             console.log(error) 
         }
@@ -103,6 +106,7 @@ function Booking() {
     const isLoggedHost = (loggedUserId === hostInfo._id)
     const isLoggedRequester = (loggedUserId === requesterInfo._id)
     console.log(reviews)
+    console.log(hostInfo)
   return (
     <div className={styles.bookingContainer}>
         <h3 className={styles.title}>Pet Sitting Book</h3>
@@ -218,6 +222,15 @@ function Booking() {
                     <h3>Booking Address</h3>
                     <p>{hostInfo.address}</p>
                     <div className={styles.mapContainer}>
+                        <MapContainer center={center} zoom={14} scrollWheelZoom={false}>
+                        <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+
+                    
+                            <Marker position={hostInfo.coordinates}></Marker>
+                        </MapContainer>
                     </div>
                     <h3>Message</h3>
                     <div className={styles.bookingMessage}>

@@ -2,12 +2,14 @@ import { useNavigate, useParams } from "react-router";
 import styles from "./Profile.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
 function Profile() {
   const { userId } = useParams();
   const [userInfo, setUserInfo] = useState(null);
   const [userReviews, setUserReviews] = useState(null);
   const navigate = useNavigate();
+  const [ center, setCenter ] = useState(null)
 
   useEffect(() => {
     getUserApiData();
@@ -20,6 +22,7 @@ function Profile() {
         `${import.meta.env.VITE_SERVER_URL}/api/user/${userId}`
       );
       setUserInfo(response.data);
+      setCenter(response.data.coordinates)
     } catch (error) {
       console.log(error);
     }
@@ -162,7 +165,20 @@ function Profile() {
               })}
             </div>
           </div>
-          <div className={styles.mapContainer}></div>
+          <h3>{userInfo.name}'s Location</h3>
+          <div className={styles.mapContainer}>
+            
+              <MapContainer center={center} zoom={14} scrollWheelZoom={false}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+
+        
+                <Marker position={userInfo.coordinates}></Marker>
+              </MapContainer>
+
+          </div>
         </div>
       </div>
     </div>

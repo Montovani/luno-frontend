@@ -30,6 +30,9 @@ function FindSitter() {
       setSitterList(response.data)
     }
   }
+  if(!sitterList){
+    return <h3>Loading...</h3>
+  }
 
   return (
     <>
@@ -42,7 +45,7 @@ function FindSitter() {
 
         <div className={styles.findSitterCard}>
             <SitterList sitterList={sitterList} />
-            <SittersMap />
+            <SittersMap sitterList={sitterList}/>
         </div>
         </div>
     </>

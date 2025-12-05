@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import styles from './EditProfileForm.module.css'
 import service from '../../../services/config.services'
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"; // for Leaflet Component imports
+import ClickMarker from '../ClickMarker';
 
 function EditProfileForm({userInfo, getUserApiData}) {
     //Maybe add the 
@@ -17,6 +19,8 @@ function EditProfileForm({userInfo, getUserApiData}) {
     const [isUploading, setIsUploading] = useState(false)
     const [inputHomeType, setInputHomeType] = useState(userInfo.homeType)
     const[inputHomeInformation, setInputHomeInformation] = useState(userInfo.homeInformation)
+    const [ center, setCenter ] = useState([52.3676, 4.9041])
+    const [clickedPosition, setClickedPosition] = useState(null);
         
     const handleSubmit = async(e)=>{
         e.preventDefault()
@@ -32,7 +36,8 @@ function EditProfileForm({userInfo, getUserApiData}) {
                 mainProfilePhoto: imageUrl,
                 address: inputAddress,
                 homeType: inputHomeType,
-                homeInformation: inputHomeInformation
+                homeInformation: inputHomeInformation,
+                coordinates: clickedPosition
             }
             setIsSubmiting(true)
             await service.patch(`/user/${userInfo._id}`,body)
@@ -120,6 +125,22 @@ function EditProfileForm({userInfo, getUserApiData}) {
             value={inputAddress}
             onChange={(e) => setInputAddress(e.target.value)}
             />
+            <div style={{width:'300px',height:'300px'}}>
+            <h4>Click in the map bellow:</h4>
+            <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
+            <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+
+            {/* invoke Marker Componentes here */}
+                   
+            <ClickMarker setClickedPosition={setClickedPosition} />
+            { clickedPosition !== null && <Marker position={clickedPosition} /> }
+            </MapContainer>;
+
+            </div>
+            
             <h4>About You</h4>
             <textarea
             placeholder={userInfo.aboutUser? userInfo.aboutUser: "Add about you "}

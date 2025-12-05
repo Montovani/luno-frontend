@@ -1,8 +1,12 @@
 .container {
-  flex: 1;                      /* ocupa 1/3 */
+  flex: 2;                      /* ocupa 1/3 */
   background-color: rgb(228, 221, 221);
   border-radius: 1.2rem;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 90rem; /* ou 400px, ajusta como quiser */
+  border-radius: 12px;
+  overflow: hidden;
               
 }
 

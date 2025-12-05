@@ -21,3 +21,9 @@
   width: 100%;
   min-height: 80rem;
 }
+
+@media (max-width: 768px){
+   .findSitterCard{
+    flex-direction: column;
+   }
+}

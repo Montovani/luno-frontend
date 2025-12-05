@@ -69,6 +69,10 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.leaflet-container {
+  height: 100%; 
+  width: 100%; 
+}
 
 @media (prefers-color-scheme: light) {
   :root {
