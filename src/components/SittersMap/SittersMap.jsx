@@ -20,11 +20,14 @@ function SittersMap({sitterList}) {
 
         {/* invoke Marker Componentes here */}
         {
-            sitterList.map((eachElement) => {
+            sitterList
+            .filter((eachElement) => eachElement.coordinates.length === 2)
+            .map((eachElement) => {
+
               return (
                 <Marker position={eachElement.coordinates}>
                   <Popup>
-                    {/* Example of the rest of the document data*/}
+        
                     
                     <p>Name: <b>{eachElement.name}</b></p>
                     <button onClick={()=>navigate(`/profile/${eachElement._id}`)}>Profile</button>

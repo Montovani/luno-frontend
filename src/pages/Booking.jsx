@@ -37,7 +37,7 @@ function Booking() {
             setHostInfo(response.data.host)
             setRequesterInfo(response.data.requester)
             setPets(response.data.petCared)
-            setCenter(response.data.host.coordinates)
+            setCenter(response.data.host.coordinates?.length === 2 ? response.data.host.coordinates : [52.3676, 4.9041])
         } catch (error) {
             console.log(error) 
         }
@@ -229,7 +229,7 @@ function Booking() {
                         />
 
                     
-                            <Marker position={hostInfo.coordinates}></Marker>
+                            {hostInfo.coordinates?.length === 2 && <Marker position={hostInfo.coordinates}></Marker>}
                         </MapContainer>
                     </div>
                     <h3>Message</h3>

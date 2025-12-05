@@ -22,7 +22,7 @@ function Profile() {
         `${import.meta.env.VITE_SERVER_URL}/api/user/${userId}`
       );
       setUserInfo(response.data);
-      setCenter(response.data.coordinates)
+      setCenter(response.data.coordinates?.length === 2 ? response.data.coordinates : [52.3676, 4.9041])
     } catch (error) {
       console.log(error);
     }
@@ -175,7 +175,7 @@ function Profile() {
             />
 
         
-                <Marker position={userInfo.coordinates}></Marker>
+                {userInfo.coordinates?.length === 2 && <Marker position={userInfo.coordinates}></Marker>}
               </MapContainer>
 
           </div>
