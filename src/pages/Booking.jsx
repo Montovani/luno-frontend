@@ -184,7 +184,7 @@ function Booking() {
                             </select>
                         </div>
                         <div>
-                            <button onClick={handleCreateNewReview} className={styles.sendReviewBtn}> Submit Review</button>
+                            <button type='button' onClick={handleCreateNewReview} className={styles.sendReviewBtn}> Submit Review</button>
                         </div>
                     </form>                    
                     </>
