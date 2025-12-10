@@ -44,6 +44,7 @@ function Profile() {
   if (!userInfo || !userReviews) {
     return <h3>Loading...</h3>;
   }
+  console.log(userReviews)
   return (
     <div className={styles.mainContainer}>
       <div className={styles.headerContainer}>
@@ -148,7 +149,6 @@ function Profile() {
               {userReviews.map((item) => {
                 return (
                   <div key={item._id}>
-                    {console.log(item)}
                     <div className={styles.bookingMessage}>
                       <div className={styles.avatarMessage}>
                         <img
