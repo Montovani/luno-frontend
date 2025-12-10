@@ -165,7 +165,7 @@ function Booking() {
                 <h3>Total of Lunies</h3>
                 <h3>{booking.lunies}</h3>
                 <button onClick={handleCancelBtn} className={styles.cancelBtn}>Cancel Reservation</button>
-                {booking.status === 'completed' && isLoggedRequester && !reviews.length>0? (
+                {booking.status === 'completed' && isLoggedRequester && reviews.length === 0? (
                     <>
                     <h4>Booking Review</h4>
                     <p>Review the host to help the community</p>
