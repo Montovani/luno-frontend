@@ -95,7 +95,10 @@ function Booking() {
                 bookSitting: bookingId
             }
             await service.post('/review',body)
+            setTextReview("")
+            setStars(null)
             getBookingApiData()
+            getReviewApiData()
         } catch (error) {
             console.log(error)
         }
