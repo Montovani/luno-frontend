@@ -5,7 +5,7 @@ function SitterCard({name,petsCategoryAllowed,mainProfilePhoto}) {
     <div className={styles.cardContainer}>
       <div></div>
       <div className={styles.imgContainer}>
-        <img style={{width:'100%', objectFit:'cover'}} src={mainProfilePhoto} alt="" />
+        <img style={{width:'100%', height:'100%', objectFit:'cover'}} src={mainProfilePhoto} alt="" />
       </div>
       <div className={styles.cardTitleSub}>
         <h3>{name}</h3>

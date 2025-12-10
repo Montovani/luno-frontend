@@ -49,7 +49,7 @@ function Profile() {
       <div className={styles.headerContainer}>
         <div className={styles.avatarContainer}>
           <img
-            style={{ width: "100%", objectFit: "cover" }}
+            style={{ width: "100%", height:'100%', objectFit: "cover" }}
             src={userInfo?.avatar}
             alt=""
           />
@@ -72,7 +72,7 @@ function Profile() {
         <div className={styles.firstSection}>
           <div className={styles.mainPhotosContainer}>
             <img
-              style={{ width: "100%", objectFit: "cover" }}
+              style={{ width: "100%", height:'100%', objectFit: "cover" }}
               src={userInfo?.mainProfilePhoto}
               alt=""
             />
@@ -92,7 +92,7 @@ function Profile() {
                   <div key={pet._id} className={styles.userPetContainer}>
                     <div className={styles.avatarPet}>
                       <img
-                        style={{ width: "100%", objectFit: "cover" }}
+                        style={{ width: "100%", height:'100%', objectFit: "cover" }}
                         src={pet.avatar}
                         alt=""
                       />
@@ -152,7 +152,7 @@ function Profile() {
                     <div className={styles.bookingMessage}>
                       <div className={styles.avatarMessage}>
                         <img
-                          style={{ width: "100%", objectFit: "cover" }}
+                          style={{ width: "100%", height:'100%',  objectFit: "cover" }}
                           src={item.review?.owner?.avatar}
                         />
                       </div>

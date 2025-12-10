@@ -235,7 +235,7 @@ function Booking() {
                     <h3>Message</h3>
                     <div className={styles.bookingMessage}>
                         <div className={styles.avatarMessage}>
-                            <img style={{width:'100%', objectFit:'cover'}}src={requesterInfo.avatar} />
+                            <img style={{width:'100%',height:'100%', objectFit:'cover'}}src={requesterInfo.avatar} />
                         </div>
                         <p>{booking.message}</p>
                     </div>
@@ -243,7 +243,7 @@ function Booking() {
                     {reviews.length>0? (
                         <div className={styles.bookingMessage}>
                             <div className={styles.avatarMessage}>
-                                <img style={{width:'100%', objectFit:'cover'}}src={requesterInfo.avatar} />
+                                <img style={{width:'100%', height:'100%', objectFit:'cover'}}src={requesterInfo.avatar} />
                             </div>
                             <p>{reviews[0]?.text}</p>
                         </div>
