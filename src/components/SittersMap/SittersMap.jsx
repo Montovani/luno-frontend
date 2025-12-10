@@ -21,7 +21,7 @@ function SittersMap({sitterList}) {
         {/* invoke Marker Componentes here */}
         {
             sitterList
-            .filter((eachElement) => eachElement.coordinates.length === 2)
+            .filter((eachElement) => eachElement.coordinates !== null && eachElement.coordinates.length === 2)
             .map((eachElement) => {
 
               return (
