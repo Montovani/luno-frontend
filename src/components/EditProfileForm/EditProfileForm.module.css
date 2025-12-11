@@ -84,13 +84,14 @@
 .editProfileFormContainer select {
     min-width: 25%;
     background-color: #eceef3;
-    height: 1.3rem;
+    height: 2.5rem;
     border: 1px solid rgb(238, 233, 233);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     border-radius: 0.5rem;
     color:rgb(46, 45, 45);
     font-size: 1rem;
     margin-top: 1rem;
+    font-size: 1.2rem;
 } 
 .takeCareContainer {
     display: flex;

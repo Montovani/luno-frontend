@@ -3,6 +3,8 @@ import styles from './EditProfileForm.module.css'
 import service from '../../../services/config.services'
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"; // for Leaflet Component imports
 import ClickMarker from '../ClickMarker';
+import { dutchCities } from '../../data/cities';
+import { capitalizeSentence } from '../../utils/functions';
 
 function EditProfileForm({userInfo, getUserApiData}) {
     //Maybe add the 
@@ -21,7 +23,7 @@ function EditProfileForm({userInfo, getUserApiData}) {
     const[inputHomeInformation, setInputHomeInformation] = useState(userInfo.homeInformation)
     const [ center, setCenter ] = useState([52.3676, 4.9041])
     const [clickedPosition, setClickedPosition] = useState(null);
-        
+    console.log(inputCity)
     const handleSubmit = async(e)=>{
         e.preventDefault()
         setErrorMessage("")
@@ -107,17 +109,24 @@ function EditProfileForm({userInfo, getUserApiData}) {
             <h4>Name</h4>
             <input 
             type="text" 
-            placeholder={userInfo.name}
-            value={inputName}
+            placeholder={capitalizeSentence(userInfo.name)}
+            value={capitalizeSentence(inputName)}
             onChange={(e) => setInputName(e.target.value)}
             />
             <h4>City</h4>
-            <input 
-            type="text" 
-            placeholder={userInfo.city}
+            <select
             value={inputCity}
             onChange={(e) => setInputCity(e.target.value)}
-            />
+            required
+            className={styles.selectStyle}
+            >
+            <option value={userInfo.city}>{userInfo.city}</option>
+            {dutchCities.map((cityName) => (
+                <option key={cityName} value={cityName}>
+                  {cityName}
+                </option>
+              ))}
+            </select>
             <h4>Address</h4>
             <input 
             type="text" 
@@ -137,7 +146,7 @@ function EditProfileForm({userInfo, getUserApiData}) {
                    
             <ClickMarker setClickedPosition={setClickedPosition} />
             { clickedPosition !== null && <Marker position={clickedPosition} /> }
-            </MapContainer>;
+            </MapContainer>
 
             </div>
             
@@ -230,7 +239,7 @@ function EditProfileForm({userInfo, getUserApiData}) {
                         <button onClick={()=> setAvatarUrl(null)}>Delete</button>
                     </div>
                     {/* below disabled prevents the user from attempting another upload while one is already happening */}
-                </div>;
+                </div>
 
                 {/* to render a loading message or spinner while uploading the picture */}
                 {isUploading ? <h3>... uploading image</h3> : null}
@@ -249,7 +258,7 @@ function EditProfileForm({userInfo, getUserApiData}) {
                         <button onClick={()=> setImageUrl(null)}>Delete</button>
                     </div>
                     {/* below disabled prevents the user from attempting another upload while one is already happening */}
-                </div>;
+                </div>
 
                 {/* to render a loading message or spinner while uploading the picture */}
                 {isUploading ? <h3>... uploading image</h3> : null}
