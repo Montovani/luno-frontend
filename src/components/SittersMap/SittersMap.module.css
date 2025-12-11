@@ -4,9 +4,11 @@
   border-radius: 1.2rem;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
   width: 100%;
-  height: 90rem; /* ou 400px, ajusta como quiser */
+  height: 40rem; /* ou 400px, ajusta como quiser */
   border-radius: 12px;
   overflow: hidden;
-              
+  position: sticky;
+  top:1rem;
 }
+
 
