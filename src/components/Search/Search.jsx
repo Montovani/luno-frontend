@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Search.module.css";
-import { capitalizeSentence } from "../../utils/functions";
+import { capitalize, capitalizeSentence } from "../../utils/functions";
 
 
 const petTypes = [
