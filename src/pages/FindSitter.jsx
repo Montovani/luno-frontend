@@ -5,11 +5,13 @@ import SitterList from "../components/SittersList/SitterList";
 import SittersMap from "../components/SittersMap/SittersMap";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { dutchCitiesCoordinates } from '../data/citiesCoordinates'
 
 
 function FindSitter() {
   const [search, setSearch] = useState(null)
   const [sitterList, setSitterList] = useState(null)
+  const [ center, setCenter ] = useState(null)
 
   useEffect(()=>{
     getSitterApi()
@@ -19,6 +21,7 @@ function FindSitter() {
     if(!search){
       const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/user`)
       setSitterList(response.data)
+      setCenter([52.3676, 4.9041])
     }else{
       const {city, petType} = search
       const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/user`,{
@@ -27,13 +30,16 @@ function FindSitter() {
           ...(petType && {petsCategoryAllowed: petType})
         }
       })
+      const filterCity = dutchCitiesCoordinates.find((city)=>{
+          return city.name === search.city
+        })
       setSitterList(response.data)
+      setCenter(filterCity.center)
     }
   }
   if(!sitterList){
     return <h3>Loading...</h3>
   }
-
   return (
     <>
         <Search setSearch={setSearch} />
@@ -45,7 +51,7 @@ function FindSitter() {
 
         <div className={styles.findSitterCard}>
             <SitterList sitterList={sitterList} />
-            <SittersMap sitterList={sitterList}/>
+            <SittersMap sitterList={sitterList} center={center}/>
         </div>
         </div>
     </>

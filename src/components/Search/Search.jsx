@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Search.module.css";
+import { capitalizeSentence } from "../../utils/functions";
+
 
 const petTypes = [
   "Small dog",
@@ -16,7 +18,7 @@ function Search({ setSearch = () => {}, variant = "default" }) {
     event.preventDefault();
     const searchObj = {
       petType,
-      city: searchQuery
+      city: capitalizeSentence(searchQuery)
     };
     if (typeof setSearch === "function") {
       setSearch(searchObj);
@@ -38,7 +40,7 @@ function Search({ setSearch = () => {}, variant = "default" }) {
                 id="searchQuery"
                 name="searchQuery"
                 type="search"
-                placeholder="Busque por cidade ou nome"
+                placeholder="Type the city you want to search"
                 className={`${styles.input} ${isMinimal ? styles.minimalInput : ""}`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
