@@ -86,8 +86,6 @@ function EditProfileForm({userInfo, getUserApiData}) {
             setImageUrl(response.data.imageUrl)
             setIsUploadingProfile(false)
         }
-        //                          |
-        //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
     } catch (error) {
         console.log(error)
     }
