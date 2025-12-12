@@ -18,7 +18,8 @@ function EditProfileForm({userInfo, getUserApiData}) {
     const [imageUrl, setImageUrl] = useState(userInfo.mainProfilePhoto)
     const [avatarUrl, setAvatarUrl] = useState(userInfo.avatar)
     const [inputAddress, setInputAddress] = useState(userInfo.address)
-    const [isUploading, setIsUploading] = useState(false)
+    const [isUploadingProfile, setIsUploadingProfile] = useState(false)
+    const [isUploadingAvatar, setIsUploadingAvatar] = useState(false)
     const [inputHomeType, setInputHomeType] = useState(userInfo.homeType)
     const[inputHomeInformation, setInputHomeInformation] = useState(userInfo.homeInformation)
     const [ center, setCenter ] = useState([52.3676, 4.9041])
@@ -63,8 +64,12 @@ function EditProfileForm({userInfo, getUserApiData}) {
         // to prevent accidentally clicking the choose file button and not selecting a file
         return;
     }
-
-    setIsUploading(true); 
+    if(typeOfImage === 'avatar'){
+        setIsUploadingAvatar(true)
+    }
+    if(typeOfImage === 'main'){
+        setIsUploadingProfile(true)
+    }
     const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
     uploadData.append("image", e.target.files[0]);
     //                   |
@@ -75,14 +80,14 @@ function EditProfileForm({userInfo, getUserApiData}) {
        
         if(typeOfImage === 'avatar'){
             setAvatarUrl(response.data.imageUrl)
+            setIsUploadingAvatar(false)
         }
         if(typeOfImage === 'main'){
-            setImageUrl(response.data.imageUrl);
+            setImageUrl(response.data.imageUrl)
+            setIsUploadingProfile(false)
         }
         //                          |
         //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
-
-        setIsUploading(false); // to stop the loading animation
     } catch (error) {
         console.log(error)
     }
@@ -233,38 +238,40 @@ function EditProfileForm({userInfo, getUserApiData}) {
                         type="file"
                         name="image"
                         onChange={(e) => handleFileUpload(e, "avatar")}
-                        disabled={isUploading}
+                        disabled={isUploadingAvatar}
                     />
                     <div>
                         <button onClick={()=> setAvatarUrl(null)}>Delete</button>
                     </div>
                     {/* below disabled prevents the user from attempting another upload while one is already happening */}
-                </div>
+                
 
                 {/* to render a loading message or spinner while uploading the picture */}
-                {isUploading ? <h3>... uploading image</h3> : null}
+                {isUploadingAvatar ? <h3>... uploading avatar</h3> : null}
 
                 {/* below line will render a preview of the image from cloudinary */}
                 {avatarUrl ? (<div><img src={avatarUrl} alt="img" width={200} /></div>) : null}
+                </div>
                 <div>
                     <h4>Add/Edit Profile Image</h4>
                     <input
                         type="file"
                         name="image"
                         onChange={(e) => handleFileUpload(e, "main")}
-                        disabled={isUploading}
+                        disabled={isUploadingProfile}
                     />
                     <div>
                         <button onClick={()=> setImageUrl(null)}>Delete</button>
                     </div>
                     {/* below disabled prevents the user from attempting another upload while one is already happening */}
-                </div>
+                
 
                 {/* to render a loading message or spinner while uploading the picture */}
-                {isUploading ? <h3>... uploading image</h3> : null}
+                {isUploadingProfile ? <h3>... uploading profile</h3> : null}
 
                 {/* below line will render a preview of the image from cloudinary */}
-                {imageUrl ? (<div><img src={imageUrl} alt="img" width={200} /></div>) : null}
+                {imageUrl ? (<img src={imageUrl} alt="img" width={200} />) : null}
+                </div>
             </div>
                  {errorMessage ? (
                             <p className={styles.errorBox}>{errorMessage}</p>
