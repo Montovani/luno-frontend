@@ -72,8 +72,6 @@ function EditProfileForm({userInfo, getUserApiData}) {
     }
     const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
     uploadData.append("image", e.target.files[0]);
-    //                   |
-    //     this name needs to match the name used in the middleware in the backend => uploader.single("image")
 
     try {
         const response = await service.post('/upload', uploadData)
