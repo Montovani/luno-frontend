@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import { BarLoader } from "react-spinners";
+import { capitalizeSentence } from "../utils/functions";
 const override = {
   display: "block",
   textAlign: 'center',
@@ -160,7 +161,7 @@ function Profile() {
         </div>
         <div className={styles.secondSection}>
           <div>
-            <h3>What people say about {userInfo.name}</h3>
+            <h3>What people say about {capitalizeSentence(userInfo.name)}</h3>
             <div className={styles.reviewsContainer}>
               {userReviews.map((item) => {
                 return (
@@ -172,7 +173,7 @@ function Profile() {
                           src={item.review?.owner?.avatar}
                         />
                       </div>
-                      <p>{item.review?.owner?.name}</p>
+                      <p>{capitalizeSentence(item.review?.owner?.name)}</p>
                       <p>{item.review?.text}</p>
                       <p>{item.review?.stars} Stars</p>
                     </div>

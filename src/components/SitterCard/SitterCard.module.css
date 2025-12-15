@@ -2,13 +2,26 @@
     margin: 1rem;
     width: 17rem;
     min-height: 20.5rem;
+    position:relative;
 }
 .imgContainer {
     border-radius: 1.2rem;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.586);
     width: 100%;
     height: 12rem;
     overflow: hidden;
+}
+.avatarContainer{
+     border-radius: 5rem;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+    background-color: rgb(212, 209, 209);
+    
+    width: 4rem;
+    overflow: hidden;
+    height: 4rem;
+    position: absolute;
+    top: 9.5rem;
+    left: 12rem;
 }
 .cardTitleSub p{
     margin-top:0;
@@ -21,13 +34,18 @@
 }
 .petCared {
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
 }
 .petCared div{
-    background-color: rgb(128, 128, 161);
-    border-radius: 5rem;
-    width: 6rem;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #4f46e5;
+    background-color: rgba(79, 70, 229, 0.1);
+    border-radius: 999px;
+    line-height: 1;
+    white-space: nowrap;
 }
 .petCared p{
     margin: 0;

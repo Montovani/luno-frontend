@@ -4,7 +4,7 @@ import FullPetCard from '../components/PetCard/FullPetCard';
 import { useEffect, useState } from 'react';
 import service from '../../services/config.services';
 import { Link, useParams } from 'react-router';
-import { capitalize } from '../utils/functions';
+import { capitalize, capitalizeSentence } from '../utils/functions';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
@@ -215,7 +215,7 @@ function Booking() {
                         <Link to={`/profile/${hostInfo._id}`}>
                         <UserCard
                         type={'booking'}
-                        name={hostInfo.name}
+                        name={capitalizeSentence(hostInfo.name)}
                         location={hostInfo.city}
                         avatar={hostInfo.avatar}/>
                         </Link>
@@ -223,7 +223,7 @@ function Booking() {
                     <div className={styles.requester}>
                         <h3>The Requester</h3>
                         <Link to={`/profile/${requesterInfo._id}`}>
-                        <UserCard type={'booking'} name={requesterInfo.name}
+                        <UserCard type={'booking'} name={capitalizeSentence(requesterInfo.name)}
                         location={requesterInfo.city}
                         avatar={requesterInfo.avatar}/>
                         </Link>

@@ -30,7 +30,7 @@ if(!sitterList){
   return (
     <div className={styles.container}>
         {sitterList.map((sitter)=>{
-          return <Link to ={`/profile/${sitter._id}`}><SitterCard key={sitter._id} name={sitter.name} petsCategoryAllowed={sitter.petsCategoryAllowed} mainProfilePhoto={sitter.mainProfilePhoto}  /></Link>
+          return <Link to ={`/profile/${sitter._id}`}><SitterCard key={sitter._id} name={sitter.name} petsCategoryAllowed={sitter.petsCategoryAllowed} mainProfilePhoto={sitter.mainProfilePhoto} avatar={sitter.avatar}  /></Link>
         })}
     </div>
   )
