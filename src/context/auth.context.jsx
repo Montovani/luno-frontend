@@ -1,5 +1,13 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, CSSProperties } from "react";
+import { BarLoader, ClipLoader, SyncLoader } from "react-spinners";
+
+const override = {
+  display: "block",
+  textAlign: 'center',
+  margin: "30% auto",
+  borderColor: "red",
+};
 
 // Context Component
 const AuthContext = createContext()
@@ -53,7 +61,18 @@ function AuthWrapper(props){
 
     if(isValidatingUser){
         //Most important loading effect
-        return <h3>Validating user...</h3>
+        return (
+            
+            <BarLoader
+            color="#183F39"
+            loading={true}
+            cssOverride={override}
+            size={35}
+            aria-label="Loading"
+            data-testid="loader"
+            >
+            </BarLoader>
+        )
     }
     return (
         <AuthContext.Provider value={passedContext}>
