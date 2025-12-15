@@ -4,6 +4,13 @@ import UserCard from "../components/UserCard/UserCard";
 import PetCard from "../components/PetCard/PetCard";
 import BookingCard from "../components/BookingCard/BookingCard";
 import axios from "axios";
+import { BarLoader } from "react-spinners";
+const override = {
+  display: "block",
+  textAlign: 'center',
+  margin: "30% auto",
+  borderColor: "red",
+};
 
 function Dashboard() {
   const [userInfo, setUserInfo] = useState(null);
@@ -36,7 +43,17 @@ function Dashboard() {
     }
   }
   if(!userInfo || !pets || !bookings){
-    return <h3>Loading...</h3>
+    return (
+      <BarLoader
+        color="#183F39"
+        loading={true}
+        cssOverride={override}
+        size={35}
+        aria-label="Loading"
+        data-testid="loader"
+      >
+      </BarLoader>
+    )
   }
   return (
     <div className={styles.page}>

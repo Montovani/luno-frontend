@@ -8,6 +8,13 @@ import { capitalize } from '../utils/functions';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
+import { BarLoader } from 'react-spinners';
+const override = {
+  display: "block",
+  textAlign: 'center',
+  margin: "30% auto",
+  borderColor: "red",
+};
 
 function Booking() {
     // I can destructure booking to be better organized instead of having a bunch of states.
@@ -103,7 +110,17 @@ function Booking() {
         }
     }
     if(!hostInfo || !requesterInfo || !pets || !booking){
-        return <h4>Loading...</h4>
+        return (
+            <BarLoader
+                color="#183F39"
+                loading={true}
+                cssOverride={override}
+                size={35}
+                aria-label="Loading"
+                data-testid="loader"
+            >
+            </BarLoader>
+        )
     }
     const isLoggedHost = (loggedUserId === hostInfo._id)
     const isLoggedRequester = (loggedUserId === requesterInfo._id)

@@ -3,11 +3,29 @@ import SitterCard from '../SitterCard/SitterCard'
 import styles from './SitterList.module.css'
 import axios from 'axios'
 import { Link } from 'react-router'
+import { BarLoader } from 'react-spinners'
+
+const override = {
+  display: "block",
+  textAlign: 'center',
+  margin: "30% auto",
+  borderColor: "red",
+};
 
 function SitterList({sitterList}) {
   
 if(!sitterList){
-    return <h3>Loading...</h3>
+  return (
+    <BarLoader
+      color="#183F39"
+      loading={true}
+      cssOverride={override}
+      size={35}
+      aria-label="Loading"
+      data-testid="loader"
+    >
+    </BarLoader>
+  )
 }
   return (
     <div className={styles.container}>

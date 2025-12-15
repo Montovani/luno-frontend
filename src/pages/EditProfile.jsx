@@ -5,6 +5,14 @@ import styles from './EditProfile.module.css'
 import service from '../../services/config.services'
 import EditProfileForm from '../components/EditProfileForm/EditProfileForm'
 import { useNavigate } from 'react-router'
+import { BarLoader } from 'react-spinners'
+
+const override = {
+  display: "block",
+  textAlign: 'center',
+  margin: "30% auto",
+  borderColor: "red",
+};
 
 function EditProfile() {
     const navigate = useNavigate()
@@ -26,7 +34,17 @@ function EditProfile() {
         navigate('/edit-pets')
     }
     if(!userInfo){
-        return <h3>Loading...</h3>
+        return (
+            <BarLoader
+                color="#183F39"
+                loading={true}
+                cssOverride={override}
+                size={35}
+                aria-label="Loading"
+                data-testid="loader"
+            >
+            </BarLoader>
+        )
     }
   return (
     <div className={styles.mainContainer}>

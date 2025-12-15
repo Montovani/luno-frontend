@@ -3,6 +3,10 @@ import { useNavigate } from "react-router";
 import EditablePetCard from "../components/PetCard/EditablePetCard";
 import styles from "./EditPets.module.css";
 import service from "../../services/config.services";
+import { MoonLoader } from "react-spinners";
+const override = {
+  
+};
 
 function EditPets() {
   const navigate = useNavigate();
@@ -183,15 +187,6 @@ const handleFileUpload = async (e) => {
                 onChange={(e) => setPetDOB(e.target.value)}
               />
             </label>
-            <label className={styles.field}>
-              <span>Photo URL</span>
-              <input
-                type="url"
-                value={petAvatar}
-                onChange={(e) => setPetAvatar(e.target.value)}
-                placeholder="https://"
-              />
-            </label>
           </div>
           <div className={styles.checkboxRow}>
             <label className={styles.checkbox}>
@@ -233,9 +228,8 @@ const handleFileUpload = async (e) => {
             </div>
             {/* below disabled prevents the user from attempting another upload while one is already happening */}
           </div>
-          ;
           {/* to render a loading message or spinner while uploading the picture */}
-          {isUploading ? <h3>... uploading image</h3> : null}
+          {isUploading ? <MoonLoader color="#183F39" loading={true} cssOverride={override} size={35} aria-label="Loading" data-testid="loader" speedMultiplier="0.6"/>: null}
           {/* below line will render a preview of the image from cloudinary */}
           {avatarUrl ? (
             <div>

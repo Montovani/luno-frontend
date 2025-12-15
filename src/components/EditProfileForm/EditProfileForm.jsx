@@ -5,6 +5,14 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"; // for L
 import ClickMarker from '../ClickMarker';
 import { dutchCities } from '../../data/cities';
 import { capitalizeSentence } from '../../utils/functions';
+import { BarLoader, MoonLoader } from 'react-spinners';
+
+const override = {
+  display: "block",
+  textAlign: 'center',
+  margin: "30% auto",
+  borderColor: "red",
+};
 
 function EditProfileForm({userInfo, getUserApiData}) {
     //Maybe add the 
@@ -99,7 +107,17 @@ function EditProfileForm({userInfo, getUserApiData}) {
     }
     
     if(!userInfo){
-        return <h3>Loading...</h3>
+        return (
+            <BarLoader
+                color="#183F39"
+                loading={true}
+                cssOverride={override}
+                size={35}
+                aria-label="Loading"
+                data-testid="loader"
+            >
+            </BarLoader>
+        )
     }
   return (
     <div className={styles.editProfileFormContainer}>
@@ -240,7 +258,7 @@ function EditProfileForm({userInfo, getUserApiData}) {
                 
 
                 {/* to render a loading message or spinner while uploading the picture */}
-                {isUploadingAvatar ? <h3>... uploading avatar</h3> : null}
+                {isUploadingAvatar ? <MoonLoader color="#183F39" loading={true} size={35} aria-label="Loading" data-testid="loader" speedMultiplier="0.6"/>: null}
 
                 {/* below line will render a preview of the image from cloudinary */}
                 {avatarUrl ? (<div><img src={avatarUrl} alt="img" width={200} /></div>) : null}
@@ -260,7 +278,7 @@ function EditProfileForm({userInfo, getUserApiData}) {
                 
 
                 {/* to render a loading message or spinner while uploading the picture */}
-                {isUploadingProfile ? <h3>... uploading profile</h3> : null}
+                {isUploadingProfile ? <MoonLoader color="#183F39" loading={true} size={35} aria-label="Loading" data-testid="loader" speedMultiplier="0.6"/> : null}
 
                 {/* below line will render a preview of the image from cloudinary */}
                 {imageUrl ? (<img src={imageUrl} alt="img" width={200} />) : null}
