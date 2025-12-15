@@ -44,7 +44,6 @@ function Profile() {
   if (!userInfo || !userReviews) {
     return <h3>Loading...</h3>;
   }
-  console.log(userReviews)
   return (
     <div className={styles.mainContainer}>
       <div className={styles.headerContainer}>

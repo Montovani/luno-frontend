@@ -50,7 +50,6 @@ function Booking() {
         
         setReviews(response.data)
     }
-    console.log(reviews)
     const handleSaveNewStatus = async()=>{
         const body = {
             status: newStatus
@@ -108,8 +107,6 @@ function Booking() {
     }
     const isLoggedHost = (loggedUserId === hostInfo._id)
     const isLoggedRequester = (loggedUserId === requesterInfo._id)
-    console.log(reviews)
-    console.log(hostInfo)
   return (
     <div className={styles.bookingContainer}>
         <h3 className={styles.title}>Pet Sitting Book</h3>

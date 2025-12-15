@@ -18,7 +18,6 @@ function ChangeMapView({ center }) {
 
 function SittersMap({sitterList, center}) {
   const navigate = useNavigate()
-  console.log(center)
   
   return (
     <div className={styles.container}>

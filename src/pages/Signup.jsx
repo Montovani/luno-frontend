@@ -36,7 +36,6 @@ function Signup() {
       setErrorMessage(error.response.data.errorMessage)
     }
   }
-  console.log(city)
   return (
     <div className={styles.container}>
       <div className={styles.card}>

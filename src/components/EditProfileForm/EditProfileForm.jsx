@@ -24,7 +24,6 @@ function EditProfileForm({userInfo, getUserApiData}) {
     const[inputHomeInformation, setInputHomeInformation] = useState(userInfo.homeInformation)
     const [ center, setCenter ] = useState([52.3676, 4.9041])
     const [clickedPosition, setClickedPosition] = useState(null);
-    console.log(inputCity)
     const handleSubmit = async(e)=>{
         e.preventDefault()
         setErrorMessage("")
@@ -90,9 +89,7 @@ function EditProfileForm({userInfo, getUserApiData}) {
     };
     const handleRemovePet = (index)=>{
         const petArrCopy = structuredClone(petsTakeCare)
-        console.log(petArrCopy)
         petArrCopy.splice(index,1)
-        console.log(petArrCopy)
         setPetsTakeCare(petArrCopy)
     }
     const handleRemoveHomeInfo = (index)=>{
