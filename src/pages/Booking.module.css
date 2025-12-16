@@ -140,11 +140,12 @@ p{
      gap: 2rem;
 }
 .avatarMessage{
-  width: 4rem;
-  height: 4rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.425);
-  border-radius: 50%;
-  overflow: hidden;  
+    width: 4rem;
+    height: 4rem;
+    box-shadow: 0 10px 30px #0000006c;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
     
