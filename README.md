@@ -36,9 +36,6 @@ The UI consumes these backend endpoints (paths are relative to `${VITE_SERVER_UR
 
 | Method | Endpoint | Purpose |
 | --- | --- | --- |
-| POST | `/api/auth/signup` | Create a new member account. |
-| POST | `/api/auth/login` | Authenticate and receive a JWT. |
-| GET | `/api/auth/verify` | Validate stored JWT and fetch user id. |
 | GET | `/api/user` | List sitters, filterable by `city` and `petsCategoryAllowed`. |
 | GET | `/api/user/:userId` | Fetch sitter profile, pets, home details, and location. |
 | PATCH | `/api/user/:userId` | Update profile, address, allowed pet categories, and images. |
