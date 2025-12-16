@@ -43,13 +43,11 @@ The UI consumes these backend endpoints (paths are relative to `${VITE_SERVER_UR
 | GET | `/api/pet/owner` | List pets owned by the authenticated user. |
 | POST | `/api/pet` | Create a pet profile with metadata and avatar. |
 | DELETE | `/api/pet/:petId` | Remove an existing pet profile. |
-| POST | `/api/upload` | Upload images for avatars or profile photos. |
 | POST | `/api/booking` | Create a booking request with host, dates, pets, and message. |
 | GET | `/api/booking/:bookingId` | Retrieve booking details, participants, pets, and status. |
 | PATCH | `/api/booking/:bookingId` | Update booking status (confirm, progress, complete, cancel). |
 | GET | `/api/review/user/:userId` | Get all reviews for a user. |
 | GET | `/api/review/booking/:bookingId` | Fetch reviews tied to a booking. |
-| POST | `/api/review` | Submit a new review for a completed booking. |
 
 ## Acknowledgements
 - Inspired by community-driven pet care platforms and trusted-home exchanges.
