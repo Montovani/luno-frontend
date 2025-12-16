@@ -14,6 +14,7 @@ import EditProfile from './pages/EditProfile'
 import EditPets from './pages/EditPets'
 import Booking from './pages/Booking'
 import PrivateUser from './pages/PrivateUser'
+import Footer from './components/Footer/Footer'
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/booking/:bookingId' element={<Private><Booking/></Private>}></Route>
         <Route path='/private/profile' element={<Private><PrivateUser/></Private>}></Route>
       </Routes>
+      <Footer/>
     </>
   )
 }

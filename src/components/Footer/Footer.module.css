@@ -1,0 +1,44 @@
+.mainContainer {
+    background: #113a31;
+  color: #f2f7f4;
+  border-radius: 26px;
+  padding: 2.8rem 2.2rem;
+  margin-bottom: 1.2rem;
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.imgContainer {
+    width: 7rem;
+    height: auto;
+}
+.imgContainer img {
+    width: 100%;
+}
+.textContainer p {
+    height: auto;
+}
+.githubImgContainer {
+    width: 1.8rem;
+    height: auto;
+}
+.githubImgContainer img {
+    width: 100%;
+}
+.textContainer {
+    display: flex;
+    gap: 0.8rem;
+}
+
+@media (max-width: 768px){
+    .mainContainer{
+        flex-direction: column;
+        gap:10px
+    }
+    .textContainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
