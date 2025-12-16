@@ -155,7 +155,7 @@ function Request() {
                         }`}
                         onClick={() => handlePetSelection(petId)}
                       >
-                        <div className={styles.petAvatar}></div>
+                        <div className={styles.petAvatar}><img style={{width:'100%'}} src={pet.avatar} alt="" /></div>
                         <div className={styles.petInfo}>
                           <p className={styles.petName}>{pet.name}</p>
                           <p className={styles.petMeta}>

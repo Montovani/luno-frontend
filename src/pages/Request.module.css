@@ -116,7 +116,8 @@
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  border: 1.6px dashed #d1d5db;
+  overflow: hidden;
+  border: 1.6px solid #d1d5db;
   background: #ffffff;
 }
 
