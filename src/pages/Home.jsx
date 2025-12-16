@@ -4,12 +4,12 @@ import styles from "./Home.module.css";
 
 const galleryImages = [
   {
-    src: "https://res.cloudinary.com/dbrf678f6/image/upload/v1764869684/ChatGPT_Image_4_de_dez._de_2025_18_34_34_eub8vx.png",
+    src: "https://res.cloudinary.com/dbrf678f6/image/upload/v1765890350/WhatsApp_Image_2025-12-10_at_12.25.28_z3e2lu.jpg",
     alt: "Golden puppy looking up.",
     variant: "wide",
   },
   {
-    src: "https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=900&q=80",
+    src: "https://res.cloudinary.com/dbrf678f6/image/upload/v1765890278/WhatsApp_Image_2025-12-10_at_12.29.07_fknbs9.jpg",
     alt: "Woman smiling while holding her dog.",
     variant: "wide",
   },
@@ -19,7 +19,7 @@ const galleryImages = [
     variant: "tall",
   },
   {
-    src: "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?auto=format&fit=crop&w=900&q=80",
+    src: "https://res.cloudinary.com/dbrf678f6/image/upload/v1765890220/WhatsApp_Image_2025-12-10_at_12.25.27_cd5fa8.jpg",
     alt: "Man relaxing with his dog on the couch.",
     variant: "tall",
   },

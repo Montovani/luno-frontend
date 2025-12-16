@@ -267,6 +267,7 @@
 
 .stepImage {
   width: 100%;
+  height: 18.9rem;
   background: linear-gradient(145deg, #fefcf8 0%, #f3ede2 100%);
   border: 1px solid #e6e0d4;
   border-radius: 18px;
@@ -281,6 +282,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  object-position: top;
 }
 
 .stepBadge {
