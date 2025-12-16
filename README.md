@@ -6,9 +6,7 @@ Luno is a credit-based pet-sitting marketplace that helps pet owners swap truste
 - [Project Description](#project-description)
 - [Features](#features)
 - [Tech Stack / Technologies Used](#tech-stack--technologies-used)
-- [How to Use the Project](#how-to-use-the-project)
 - [API Routes](#api-routes)
-- [Contact / Author Details](#contact--author-details)
 - [Acknowledgements](#acknowledgements)
 
 ## Project Description
@@ -27,31 +25,11 @@ Luno is a credit-based pet-sitting marketplace that helps pet owners swap truste
 
 ## Tech Stack / Technologies Used
 - **Frontend:** React 19, Vite, React Router 7
-- **Data & Networking:** Axios, React Context for auth
+- **BackendÇ** Node.js, Express, Mongoose
+- **Data & Networking:** MongoDB, Axios, React Context for auth
 - **Mapping:** Leaflet with React Leaflet
 - **UI/UX:** CSS Modules, React Spinners for loading states
 - **Tooling:** ESLint 9, Vite build/preview scripts
-
-## How to Use the Project
-1. **Clone and install**
-   ```bash
-   git clone https://github.com/<your-org>/luno.git
-   cd luno
-   npm install
-   ```
-2. **Configure environment**
-   - Create a `.env` file with `VITE_SERVER_URL=<your-api-base-url>` (e.g., `https://api.example.com`).
-   - The frontend expects API endpoints under `${VITE_SERVER_URL}/api`.
-3. **Run locally**
-   ```bash
-   npm run dev
-   ```
-   Vite will print the local URL (defaults to `http://localhost:5173`).
-4. **Build for production**
-   ```bash
-   npm run build
-   npm run preview
-   ```
 
 ## API Routes
 The UI consumes these backend endpoints (paths are relative to `${VITE_SERVER_URL}`):
@@ -75,13 +53,6 @@ The UI consumes these backend endpoints (paths are relative to `${VITE_SERVER_UR
 | GET | `/api/review/user/:userId` | Get all reviews for a user. |
 | GET | `/api/review/booking/:bookingId` | Fetch reviews tied to a booking. |
 | POST | `/api/review` | Submit a new review for a completed booking. |
-
-> Note: Ensure protected routes include the `Authorization: Bearer <token>` header as required by the backend.
-
-## Contact / Author Details
-- **Maintainer:** _Your Name_
-- **Email:** _you@example.com_
-- **LinkedIn:** [_linkedin.com/in/your-handle_](https://linkedin.com/in/your-handle)
 
 ## Acknowledgements
 - Inspired by community-driven pet care platforms and trusted-home exchanges.
