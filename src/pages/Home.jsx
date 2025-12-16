@@ -184,7 +184,7 @@ function Home() {
       <section className={`${styles.bottomCta} ${styles.softCta}`}>
         <div className={styles.ctaMedia}>
           <img
-            src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=800&q=80"
+            src="https://res.cloudinary.com/dbrf678f6/image/upload/v1765909938/WhatsApp_Image_2025-12-16_at_10.27.51_d89ute.jpg"
             alt="Happy dog sitting on a blanket."
           />
         </div>
